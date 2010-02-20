@@ -1,4 +1,7 @@
 
+0.2
+	github.curl.wrapper.inc.php - Developed and tested
+	Renammed and reordered files and classes
 0.1
 	curl.inc.php - Developed and tested
 	test/utils.inc.php - Developed and tested

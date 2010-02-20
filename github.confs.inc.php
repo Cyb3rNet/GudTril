@@ -23,5 +23,10 @@ define('HTTPS', 1);
 define('GITHUB_BASEURL', 'github.com/api/v2/');
 
 
+////
+//// GITHUB API MAX REQUESTS PER MINUTE
+////
+//
+define('GITHUB_API_CALL_LIMIT', 60);
 
 ?>

@@ -38,7 +38,7 @@ class CCurlBaseGet extends CGithubAPICallLimitator
 		//getting response from server
 		$sResponse = curl_exec($this->_ch);
 		
-		echo curl_error($this->_ch);
+		#echo curl_error($this->_ch);
 		
 		return $sResponse;
 	}
@@ -90,7 +90,7 @@ class CCurlBasePost extends CGithubAPICallLimitator
 		//getting response from server
 		$sResponse = curl_exec($this->_ch);
 		
-		echo curl_error($this->_ch);
+		#echo curl_error($this->_ch);
 		
 		return $sResponse;
 	}

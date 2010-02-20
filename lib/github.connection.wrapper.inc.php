@@ -72,7 +72,7 @@ class CHTTPRequest
 //// CLASS - GITHUB REQUEST
 ////
 //
-class CGithubRequest extends CHTMLRequest
+class CGithubRequest extends CHTTPRequest
 {
 	public function __construct(string $sProtocolLessURL, CHTTPRequestMethodTypes $iMethod)
 	{

@@ -63,3 +63,11 @@ For the moment, all requests are authenticated.
 ## API Limitation
 
 I've even implemented a counter as the base curl class for limiting the the number of requests to less than 60 per minute as mentioned in the documentation. The script aborts with an **exit(1)** if 60 or more requests within a minute have been made.
+
+## Tests
+
+I've implemented a test case for the files and classes of the librairy. To run the tests, load in a browser the file **test.github.api.php**.
+
+## More Information
+
+Check the wiki of the GudTril repository on github.com.

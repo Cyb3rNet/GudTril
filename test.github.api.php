@@ -70,8 +70,8 @@ include("test/utils.inc.php");
 // INDIVIDUAL IMPLEMENTATION FILE TESTS
 //
 include("test/test.curl.inc.php");
+include("test/test.github.curl.wrapper.inc.php");
 include("test/test.github.connect.inc.php");
-include("test/test.github.connection.wrapper.inc.php");
 
 // TEST THE FOLOWING FILE SEPARATELY
 //include("test/test.github.api.call.limitator.inc.php");

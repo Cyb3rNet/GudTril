@@ -32,7 +32,7 @@ class CHTTPRequest
 	private $_iMethod;
 	private $_sPost;
 	
-	public function __construct($sURL, CHTTPRequestMethodTypes $iMethod)
+	public function __construct($sURL, $iMethod)
 	{
 		$this->_sURL = $sURL;
 		$this->_iMethod = $iMethod;
@@ -47,6 +47,21 @@ class CHTTPRequest
 	public function SetPost($sPost)
 	{
 		$this->_sPost = $sPost;
+	}
+	
+	public function GetURL()
+	{
+		return $this->_sURL;
+	}
+	
+	public function GetMethod()
+	{
+		return $this->_iMethod;
+	}
+	
+	public function GetPost()
+	{
+		return $this->_sPost;
 	}
 }
 
@@ -69,14 +84,14 @@ class CGithubCurlWrapper implements IGithubConnect
 
 	private function _GetConnectionByRequest()
 	{
-		switch ($this->_oHTTPRequest->iMethod)
+		switch ($this->_oHTTPRequest->GetMethod())
 		{
 			case CHTTPRequestMethodTypes::iGet:
-				$oCurl = new CCurlBaseGet($this->_oHTTPRequest->sURL);
+				$oCurl = new CCurlBaseGet($this->_oHTTPRequest->GetURL());
 			break;
 			
 			case CHTTPRequestMethodTypes::iPost:
-				$oCurl = new CCurlBasePost($this->_oHTTPRequest->sURL);
+				$oCurl = new CCurlBasePost($this->_oHTTPRequest->GetURL());
 			break;
 		}
 		
@@ -87,8 +102,8 @@ class CGithubCurlWrapper implements IGithubConnect
 	{
 		$this->_oConnection->PrepareOptions();
 		
-		if ($this->_oHTTPRequest->iMethod == CHTTPRequestMethodTypes::iPost)
-			$this->_oConnection->SetPostString($this->_oHTTPRequest->sPost);
+		if ($this->_oHTTPRequest->GetMethod() == CHTTPRequestMethodTypes::iPost)
+			$this->_oConnection->SetPostString($this->_oHTTPRequest->GetPost());
 		
 		return $this->_oConnection->Execute();
 	}

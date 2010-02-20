@@ -5,7 +5,10 @@
 //include("lib/github.connect.inc.php");
 
 $sTitle = "Test Github connection classes";
+$sFileName = "lib/github.connect.inc.php";
 
-_printTestFileHeader($sTitle);
+_printTestFileHeader($sTitle, $sFileName);
+
+// TEST CGithubConnect
 
 ?>

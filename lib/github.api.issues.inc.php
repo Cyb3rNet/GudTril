@@ -1,6 +1,6 @@
 <?php
 
-include("github.connection.wrapper.inc.php");
+include("github.connect.inc.php");
 
 //// INTERFACE - GITHUB API SERVICE
 //
@@ -47,7 +47,7 @@ class CGithubStateIssues
 }
 
 */
-class CGithubIssuesSearch extends CGithubConnectionWrapper implements IGithubAPIService
+class CGithubIssuesSearch extends CGithubConnect implements IGithubAPIService
 {
 	private $_sResponseType;
 	private $_sAPIPathURL;
@@ -109,7 +109,7 @@ issues:
   state: open
 
 */
-class CGithubIssuesProjectList extends CGithubConnectionWrapper implements IGithubAPIService
+class CGithubIssuesProjectList extends CGithubConnect implements IGithubAPIService
 {
 	private $_sResponseType;
 	private $_sAPIPathURL;
@@ -163,7 +163,7 @@ issue:
   state: open
 
 */
-class CGithubIssuesView extends CGithubConnectionWrapper implements IGithubAPIService
+class CGithubIssuesView extends CGithubConnect implements IGithubAPIService
 {
 	private $_sResponseType;
 	private $_sAPIPathURL;
@@ -219,7 +219,7 @@ comments:
   user: schacon
 
 */
-class CGithubIssuesListComments extends CGithubConnectionWrapper implements IGithubAPIService
+class CGithubIssuesListComments extends CGithubConnect implements IGithubAPIService
 {
 	private $_sResponseType;
 	private $_sAPIPathURL;
@@ -277,7 +277,7 @@ issue:
   state: open
   
 */
-class CGithubIssuesOpen extends CGithubConnectionWrapper implements IGithubAPIService
+class CGithubIssuesOpen extends CGithubConnect implements IGithubAPIService
 {
 	private $_sResponseType;
 	private $_sAPIPathURL;
@@ -335,7 +335,7 @@ issue:
   state: closed
 
 */
-class CGithubIssuesClose extends CGithubConnectionWrapper implements IGithubAPIService
+class CGithubIssuesClose extends CGithubConnect implements IGithubAPIService
 {
 	private $_sResponseType;
 	private $_sAPIPathURL;
@@ -387,7 +387,7 @@ issue:
   state: open
   
 */
-class CGithubIssuesReopen extends CGithubConnectionWrapper implements IGithubAPIService
+class CGithubIssuesReopen extends CGithubConnect implements IGithubAPIService
 {
 	private $_sResponseType;
 	private $_sAPIPathURL;
@@ -435,7 +435,7 @@ title
 body
   
 */
-class CGithubIssuesEdit extends CGithubConnectionWrapper implements IGithubAPIService
+class CGithubIssuesEdit extends CGithubConnect implements IGithubAPIService
 {
 	private $_sResponseType;
 	private $_sAPIPathURL;
@@ -488,7 +488,7 @@ labels:
 - label2
   
 */
-class CGithubIssuesListLabels extends CGithubConnectionWrapper implements IGithubAPIService
+class CGithubIssuesListLabels extends CGithubConnect implements IGithubAPIService
 {
 	private $_sResponseType;
 	private $_sAPIPathURL;
@@ -535,7 +535,7 @@ labels:
 - test_label
   
 */
-class CGithubIssuesAddLabel extends CGithubConnectionWrapper implements IGithubAPIService
+class CGithubIssuesAddLabel extends CGithubConnect implements IGithubAPIService
 {
 	private $_sResponseType;
 	private $_sAPIPathURL;
@@ -582,7 +582,7 @@ labels:
 - test_label
   
 */
-class CGithubIssuesRemoveLabel extends CGithubConnectionWrapper implements IGithubAPIService
+class CGithubIssuesRemoveLabel extends CGithubConnect implements IGithubAPIService
 {
 	private $_sResponseType;
 	private $_sAPIPathURL;
@@ -626,7 +626,7 @@ class CGithubIssuesRemoveLabel extends CGithubConnectionWrapper implements IGith
 comment
 
 */
-class CGithubIssuesComment extends CGithubConnectionWrapper implements IGithubAPIService
+class CGithubIssuesComment extends CGithubConnect implements IGithubAPIService
 {
 	private $_sResponseType;
 	private $_sAPIPathURL;

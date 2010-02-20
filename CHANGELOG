@@ -1,4 +1,8 @@
-
+0.3
+	gihub.connect.inc.php - Developed and tested
+	Renamed github.curl.wrapper.inc.php to http.requester.inc.php
+	Simplified classes and inheritance scheme
+	Assembled fake service for tests and URL assembly in test folder
 0.2
 	github.curl.wrapper.inc.php - Developed and tested
 	Renammed and reordered files and classes

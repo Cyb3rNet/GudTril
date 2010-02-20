@@ -1,56 +1,120 @@
 <?php
 
-include("curl.inc.php");
+include("github.curl.wrapper.inc.php");
 
 
-//// INTERFACE - GITHUB CONNECT
+//// INTERFACE - GITHUB RESPONSE
 //
-interface IGithubConnect
+interface IGithubResponse
 {
-	public function Connect();
+	public function SetResponseType(CGithubResponseTypes $sType);
+	public function GetResponseType();
+	public function GetResponse();
+}
+
+
+//// INTERFACE - GITHUB REQUEST
+//
+interface IGithubRequest
+{
+	public function SetRequest(CGithubRequest $oGithubRequest);
+}
+
+
+//// INTERFACE - GITHUB API SPECIFICATION
+//
+interface IGithubAPISpecification
+{
+	public function AppendAPIURL($sURL);
 }
 
 
 ////
-//// CLASS - FOR GITHUB CONNECTION
+//// CLASS - GITHUB RESPONSE TYPES
 ////
 //
-class CGithubConnect implements IGithubConnect
+class CGithubResponseTypes
 {
-	private $_oHTTPRequest;
-	private $_oConnection;
+	const sJSON = 'json';
+	const sYAML = 'yaml';
+	const sXML = 'xml';
+}
 
-	public function __construct(CHTTPRequest $oHTTPRequest)
+
+////
+//// CLASS - GITHUB REQUEST
+////
+//
+class CGithubRequest extends CHTTPRequest
+{
+	public function __construct(string $sProtocolLessURL, CHTTPRequestMethodTypes $iMethod)
 	{
-		$this->_oHTTPRequest = $oHTTPRequest;
+		$sURL = $this->_SetProtocol().$sProtocolLessURL;
 	
-		$this->_oConnection = $this->_GetConnectionByRequest();
-	}
-
-	private function _GetConnectionByRequest()
-	{
-		switch ($this->_oHTTPRequest->iMethod)
-		{
-			case CHTTPRequestMethodTypes::iGet:
-				$oCurl = new CCurlBaseGet($this->_oHTTPRequest->sURL);
-			break;
-			
-			case CHTTPRequestMethodTypes::iPost:
-				$oCurl = new CCurlBasePost($this->_oHTTPRequest->sURL);
-			break;
-		}
-		
-		return $oCurl;
+		parent::__construct($sURL, $iMethod);
 	}
 	
-	public function Connect()
+	private function _SetProtocol()
 	{
-		$this->_oConnection->PrepareOptions();
+		if (HTTPS)
+			return 'https';
+		else
+			return 'http';
+	}
+}
+
+
+////
+//// CLASS - GITHUB CONNECTION WRAPPER
+////
+//
+class CGithubConnect extends CGithubCurlWrapper implements IGithubResponse, IGithubRequest, IGithubAPISpecification
+{
+	private $_oGithubRequest;
+	private $_sResponseType;
+	private $_sAPIPath;
+	private $_sResponse;
+
+	public function __construct()
+	{
+		$this->_oGithubRequest = null;
+		$this->_sResponseType = "";
+		$this->_sAPIPath = "";
+	}
+	
+	public function SetRequest(CGithubRequest $oGithubRequest)
+	{
+		$this->_oGithubRequest = $oGithubRequest;
+	}
+
+	public function SetResponseType(CGithubResponseTypes $sType)
+	{
+		$this->_sResponseType = $sType;
+	}
+
+	public function GetResponseType()
+	{
+		return $this->_sResponseType;
+	}
+	
+	public function GetResponse()
+	{
+		return $this->_sResponse;
+	}
+	
+	public function AppendAPIURL($sPath)
+	{
+		$this->_sAPIPath = $sPath;
+	}
+	
+	public function MakeRequest()
+	{
+		$this->_oGithubRequest->AppendURL($this->_sResponseType);
+		$this->_oGithubRequest->AppendURL($this->_sAPIPath);
 		
-		if ($this->_oHTTPRequest->iMethod == CHTTPRequestMethodTypes::iPost)
-			$this->_oConnection->SetPostString($this->_oHTTPRequest->sPost);
+		parent::__construct($this->_oGithubRequest);
 		
-		return $this->_oConnection->Execute();
+		$this->_sResponse = $this->Connect();
 	}
 }
 

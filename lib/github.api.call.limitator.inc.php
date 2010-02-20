@@ -12,20 +12,18 @@ class CGithubAPICallLimitator
 
 	public function __constructor()
 	{
+		$iCallLimit = 60;
 		$iNow = time();
 		
 		if (self::$_iStartTime == 0)
 		{
 			self::$_iStartTime = time();
 		}
-		else if ($iNow - self::$_iStartTime < 60 && self::$_iCounter >= 60)
+		else if ($iNow - self::$_iStartTime < $iCallLimit && self::$_iCounter >= $iCallLimit)
 		{
-			$iSleep = 60 - ($iNow - self::$_iStartTime);
-			
-			if ($iSleep > 0)
-				sleep($iSleep);
+			exit(1);
 		}
-		else if ($iNow - self::$_iStartTime > 60)
+		else if ($iNow - self::$_iStartTime > $iCallLimit)
 		{
 			self::$_iCounter = 0;
 			self::$_iStartTime = time();

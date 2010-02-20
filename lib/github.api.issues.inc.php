@@ -52,7 +52,7 @@ class CGithubIssuesSearch extends CGithubConnectionWrapper implements IGithubAPI
 	private $_sResponseType;
 	private $_sAPIPathURL;
 	
-	public function __construct($sResponseType, $sUser, $sRepo, CGithubStateIssues $sState, $sSearchTerm)
+	public function __construct(CGithubResponseTypes $sResponseType, $sUser, $sRepo, CGithubStateIssues $sState, $sSearchTerm)
 	{
 		parent::__construct();
 		
@@ -114,7 +114,7 @@ class CGithubIssuesProjectList extends CGithubConnectionWrapper implements IGith
 	private $_sResponseType;
 	private $_sAPIPathURL;
 	
-	public function __construct($sResponseType, $sUser, $sRepo, CGithubStateIssues $sState)
+	public function __construct(CGithubResponseTypes $sResponseType, $sUser, $sRepo, CGithubStateIssues $sState)
 	{
 		parent::__construct();
 		
@@ -168,7 +168,7 @@ class CGithubIssuesView extends CGithubConnectionWrapper implements IGithubAPISe
 	private $_sResponseType;
 	private $_sAPIPathURL;
 	
-	public function __construct($sResponseType, $sUser, $sRepo, $iNumber)
+	public function __construct(CGithubResponseTypes $sResponseType, $sUser, $sRepo, $iNumber)
 	{
 		parent::__construct();
 		
@@ -224,7 +224,7 @@ class CGithubIssuesListComments extends CGithubConnectionWrapper implements IGit
 	private $_sResponseType;
 	private $_sAPIPathURL;
 	
-	public function __construct($sResponseType, $sUser, $sRepo, $iNumber)
+	public function __construct(CGithubResponseTypes $sResponseType, $sUser, $sRepo, $iNumber)
 	{
 		parent::__construct();
 		
@@ -284,7 +284,7 @@ class CGithubIssuesOpen extends CGithubConnectionWrapper implements IGithubAPISe
 	
 	private $_sPost;
 	
-	public function __construct($sResponseType, $sUser, $sRepo, $sTitle, $sBody)
+	public function __construct(CGithubResponseTypes $sResponseType, $sUser, $sRepo, $sTitle, $sBody)
 	{
 		$this->_sPost = "title=".$sTitle."&body=".$sBody;
 	
@@ -340,7 +340,7 @@ class CGithubIssuesClose extends CGithubConnectionWrapper implements IGithubAPIS
 	private $_sResponseType;
 	private $_sAPIPathURL;
 	
-	public function __construct($sResponseType, $sUser, $sRepo, $iNumber)
+	public function __construct(CGithubResponseTypes $sResponseType, $sUser, $sRepo, $iNumber)
 	{
 		parent::__construct();
 		
@@ -392,7 +392,7 @@ class CGithubIssuesReopen extends CGithubConnectionWrapper implements IGithubAPI
 	private $_sResponseType;
 	private $_sAPIPathURL;
 	
-	public function __construct($sResponseType, $sUser, $sRepo, $iNumber)
+	public function __construct(CGithubResponseTypes $sResponseType, $sUser, $sRepo, $iNumber)
 	{
 		parent::__construct();
 		
@@ -442,7 +442,7 @@ class CGithubIssuesEdit extends CGithubConnectionWrapper implements IGithubAPISe
 	
 	private $_sPost;
 	
-	public function __construct($sResponseType, $sUser, $sRepo, $iNumber, $sTitle, $sBody)
+	public function __construct(CGithubResponseTypes $sResponseType, $sUser, $sRepo, $iNumber, $sTitle, $sBody)
 	{
 		$this->_sPost = "title=".$sTitle."&body=".$sBody;
 	
@@ -493,7 +493,7 @@ class CGithubIssuesListLabels extends CGithubConnectionWrapper implements IGithu
 	private $_sResponseType;
 	private $_sAPIPathURL;
 	
-	public function __construct($sResponseType, $sUser, $sRepo)
+	public function __construct(CGithubResponseTypes $sResponseType, $sUser, $sRepo)
 	{
 		parent::__construct();
 		
@@ -540,7 +540,7 @@ class CGithubIssuesAddLabel extends CGithubConnectionWrapper implements IGithubA
 	private $_sResponseType;
 	private $_sAPIPathURL;
 	
-	public function __construct($sResponseType, $sUser, $sRepo, $sLabel, $iNumber)
+	public function __construct(CGithubResponseTypes $sResponseType, $sUser, $sRepo, $sLabel, $iNumber)
 	{
 		parent::__construct();
 		
@@ -587,7 +587,7 @@ class CGithubIssuesRemoveLabel extends CGithubConnectionWrapper implements IGith
 	private $_sResponseType;
 	private $_sAPIPathURL;
 	
-	public function __construct($sResponseType, $sUser, $sRepo, $sLabel, $iNumber)
+	public function __construct(CGithubResponseTypes $sResponseType, $sUser, $sRepo, $sLabel, $iNumber)
 	{
 		parent::__construct();
 		
@@ -633,7 +633,7 @@ class CGithubIssuesComment extends CGithubConnectionWrapper implements IGithubAP
 	
 	private $_sPost;
 	
-	public function __construct($sResponseType, $sUser, $sRepo, $iNumber, $sComment)
+	public function __construct(CGithubResponseTypes $sResponseType, $sUser, $sRepo, $iNumber, $sComment)
 	{
 		$this->_sPost = "comment=".$sComment;
 	

@@ -1,8 +1,11 @@
->>
 >> PHP 5 Github API Librairy
+>>
+>> Version 0.2
 >>
 >> MIT Licence
 >>
+>> Uses github.com API
+>> Uses CURL librairy
 
 # Another PHP Github API Wrapper Librairy
 

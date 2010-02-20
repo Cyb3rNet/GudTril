@@ -32,7 +32,7 @@ h3.test-helper
 	border-top-width:3px;
 }
 
-p.test-helper
+p.test-helper, code.test-helper
 {
 	border:2px dashed #666;
 	background-color:#EEE;
@@ -40,6 +40,7 @@ p.test-helper
 	font-size:;
 	padding:10px;
 	margin:5px;
+	display:block;
 }
 
 p.test-helper-param
@@ -70,7 +71,7 @@ include("test/utils.inc.php");
 // INDIVIDUAL IMPLEMENTATION FILE TESTS
 //
 include("test/test.curl.inc.php");
-include("test/test.github.curl.wrapper.inc.php");
+include("test/test.http.requester.inc.php");
 include("test/test.github.connect.inc.php");
 
 // TEST THE FOLOWING FILE SEPARATELY

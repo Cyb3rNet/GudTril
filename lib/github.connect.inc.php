@@ -1,15 +1,14 @@
 <?php
 
-include("github.curl.wrapper.inc.php");
+include("http.requester.inc.php");
 
 
 //// INTERFACE - GITHUB RESPONSE
 //
 interface IGithubResponse
 {
-	public function SetResponseType(CGithubResponseTypes $sType);
+	public function SetResponseType($sType);
 	public function GetResponseType();
-	public function GetResponse();
 }
 
 
@@ -17,15 +16,8 @@ interface IGithubResponse
 //
 interface IGithubRequest
 {
-	public function SetRequest(CGithubRequest $oGithubRequest);
-}
-
-
-//// INTERFACE - GITHUB API SPECIFICATION
-//
-interface IGithubAPISpecification
-{
-	public function AppendAPIURL($sURL);
+	public function SetAPIRequest($sAPIRequest);
+	public function GetAPIRequest();
 }
 
 
@@ -42,54 +34,28 @@ class CGithubResponseTypes
 
 
 ////
-//// CLASS - GITHUB REQUEST
+//// CLASS - GITHUB HTTP CONNECT
 ////
 //
-class CGithubRequest extends CHTTPRequest
+class CGithubConnect extends CHTTPRequester implements IGithubResponse, IGithubRequest
 {
-	public function __construct(string $sProtocolLessURL, CHTTPRequestMethodTypes $iMethod)
-	{
-		$sURL = $this->_SetProtocol().$sProtocolLessURL;
-	
-		parent::__construct($sURL, $iMethod);
-	}
-	
-	private function _SetProtocol()
-	{
-		if (HTTPS)
-			return 'https';
-		else
-			return 'http';
-	}
-}
-
-
-////
-//// CLASS - GITHUB CONNECTION WRAPPER
-////
-//
-class CGithubConnect extends CGithubCurlWrapper implements IGithubResponse, IGithubRequest, IGithubAPISpecification
-{
-	private $_oGithubRequest;
 	private $_sResponseType;
 	private $_sAPIPath;
 	private $_sResponse;
 
-	public function __construct()
+	public function __construct($sBaseURL, $iMethod, $sPostString = "")
 	{
-		$this->_oGithubRequest = null;
+		parent::__construct($sBaseURL, $iMethod, $sPostString = "");
+
 		$this->_sResponseType = "";
 		$this->_sAPIPath = "";
 	}
-	
-	public function SetRequest(CGithubRequest $oGithubRequest)
-	{
-		$this->_oGithubRequest = $oGithubRequest;
-	}
 
-	public function SetResponseType(CGithubResponseTypes $sType)
+	public function SetResponseType($sType)
 	{
 		$this->_sResponseType = $sType;
+
+		$this->AppendToURL($this->_sResponseType);
 	}
 
 	public function GetResponseType()
@@ -97,24 +63,16 @@ class CGithubConnect extends CGithubCurlWrapper implements IGithubResponse, IGit
 		return $this->_sResponseType;
 	}
 	
-	public function GetResponse()
+	public function SetAPIRequest($sAPIRequest)
 	{
-		return $this->_sResponse;
+		$this->_sAPIPath = $sAPIRequest;
+		
+		$this->AppendToURL($this->_sAPIPath);
 	}
 	
-	public function AppendAPIURL($sPath)
+	public function GetAPIRequest()
 	{
-		$this->_sAPIPath = $sPath;
-	}
-	
-	public function MakeRequest()
-	{
-		$this->_oGithubRequest->AppendURL($this->_sResponseType);
-		$this->_oGithubRequest->AppendURL($this->_sAPIPath);
-		
-		parent::__construct($this->_oGithubRequest);
-		
-		$this->_sResponse = $this->Connect();
+		return $this->_sAPIPath;
 	}
 }
 

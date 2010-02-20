@@ -15,7 +15,7 @@ interface IGithubAPIService
 //// CLASS - GITHUB STATE ISSUES
 ////
 //
-class CGithubStateIssues
+class CGithubIssueStates
 {
 	const sOpen = 'open';
 	const sClosed = 'closed';
@@ -54,8 +54,6 @@ class CGithubIssuesSearch extends CGithubConnect implements IGithubAPIService
 	
 	public function __construct(CGithubResponseTypes $sResponseType, $sUser, $sRepo, CGithubStateIssues $sState, $sSearchTerm)
 	{
-		parent::__construct();
-		
 		$this->_sResponseType = $sResponseType;
 		
 		$this->_sAPIPathURL = "/issues/search/".$sUser."/".$sRepo."/".$sState."/".$sSearchTerm;
@@ -63,20 +61,16 @@ class CGithubIssuesSearch extends CGithubConnect implements IGithubAPIService
 	
 	public function AssembleRequest()
 	{
-		$oGithubRequest = new CGithubRequest(GITHUB_BASEURL, CHTTPRequestMethodTypes::iGet);
-	
-		$this->SetRequest($oGithubRequest);
+		parent::__construct(GITHUB_BASEURL, CHTTPRequestMethodTypes::iGet);
 		
 		$this->SetResponseType($this->_sResponseType);
 	
-		$this->AppendAPIURL($this->_sAPIPathURL);
+		$this->SetAPIRequest($this->_sAPIPathURL);
 	}
 	
 	public function RequestService()
 	{
-		$this->MakeRequest();
-		
-		return $this->GetResponse();
+		return $this->Connect();
 	}
 }
 

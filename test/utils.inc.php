@@ -2,12 +2,6 @@
 
 // TEST UTILITARIES
 
-//// OUTPUT BUFFER FLUSH
-//
-function _f()
-{
-	ob_flush();
-}
 
 //// HTML MAINHEADER - H1
 //
@@ -42,7 +36,13 @@ function _printHTMLFileName($sFileName)
 function _printHTMLP($sContent)
 {
 	echo "<p class='test-helper'>".$sContent."</p>";
-	_f();
+}
+
+//// HTML CODE
+//
+function _printHTMLC($sContent)
+{
+	echo "<code class='test-helper'>".$sContent."</code>";
 }
 
 //// TEST FILE HEADER
@@ -51,7 +51,6 @@ function _printTestFileHeader($sTitle, $sFileName)
 {
 	_printHTMLTitleHeader($sTitle);
 	_printHTMLFileName($sFileName);
-	_f();
 }
 
 //// TEST CLASS HEADER
@@ -59,7 +58,6 @@ function _printTestFileHeader($sTitle, $sFileName)
 function _printTestClassHeader($sTitle)
 {
 	_printHTMLSectionHeader($sTitle);
-	_f();
 }
 
 //// TEST CLASS METHOD HEADER
@@ -67,15 +65,13 @@ function _printTestClassHeader($sTitle)
 function _printTestClassMethodHeader($sTitle)
 {
 	_printHTMLSubSectionHeader($sTitle);
-	_f();
 }
 
 //// TEST CLASS METHOD RESULT
 //
 function _printTestClassMethodResult($sContent)
 {
-	_printHTMLP("<em>Result:</em><br /><br />".$sContent);
-	_f();
+	_printHTMLC("Result:<br /><br />".$sContent);
 }
 
 
@@ -210,14 +206,20 @@ class CTestClass
 	
 	private function _callMethodWithReturn($sMethodName, $avArgs)
 	{
+		ob_start();
+			
 		if (count($avArgs))
 		{
-			$vReturn = call_user_func_array(array($this->_oC, $sMethodName), $avArgs);
+			call_user_func_array(array($this->_oC, $sMethodName), $avArgs);
 		}
 		else
 		{
 			$vReturn = call_user_func(array($this->_oC, $sMethodName));
 		}
+		
+		$vReturn = ob_get_contents();
+		
+		ob_end_clean();
 		
 		return $vReturn;
 	}

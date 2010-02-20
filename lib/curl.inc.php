@@ -1,22 +1,18 @@
 <?php
 
 
-include("github.api.call.limitator.inc.php");
-
 ////
 //// CLASS - CURL BASE GET
 ////
 //
-class CCurlBaseGet extends CGithubAPICallLimitator
+class CCurlBaseGet
 {
-	protected $_ch;
+	private $_ch;
 	
-	private $_sURL;
+	protected $_sURL;
 
 	public function __construct($sURL)
 	{
-		parent::__construct();
-	
 		$this->_ch = curl_init();
 		
 		$this->_sURL = $sURL;
@@ -26,6 +22,11 @@ class CCurlBaseGet extends CGithubAPICallLimitator
 	{
 		//closing the curl
 		curl_close($this->_ch);
+	}
+	
+	public function GetURL()
+	{
+		return $this->_sURL;
 	}
 	
 	public function PrepareOptions()
@@ -49,7 +50,7 @@ class CCurlBaseGet extends CGithubAPICallLimitator
 //// CLASS - CURL BASE POST
 ////
 //
-class CCurlBasePost extends CGithubAPICallLimitator
+class CCurlBasePost
 {
 	protected $_ch;
 	
@@ -58,8 +59,6 @@ class CCurlBasePost extends CGithubAPICallLimitator
 
 	public function __construct($sURL)
 	{
-		parent::__construct();
-	
 		$this->_ch = curl_init();
 		
 		$this->_sURL = $sURL;
@@ -72,6 +71,11 @@ class CCurlBasePost extends CGithubAPICallLimitator
 		curl_close($this->_ch);
 	}
 	
+	public function GetURL()
+	{
+		return $this->_sURL;
+	}
+
 	public function PrepareOptions()
 	{
 		curl_setopt($this->_ch, CURLOPT_URL, $this->_sURL);
@@ -83,6 +87,11 @@ class CCurlBasePost extends CGithubAPICallLimitator
 		$this->_sPost = $sPost;
 	}
 
+	public function GetPostString()
+	{
+		return $this->_sPost;
+	}
+	
 	public function Execute()
 	{
 		curl_setopt($this->_ch, CURLOPT_POSTFIELDS, $this->_sPost);

@@ -1,3 +1,5 @@
+>> GudTril by Cyb3r
+>>
 >> PHP 5 Github API Librairy
 >>
 >> Version 0.2

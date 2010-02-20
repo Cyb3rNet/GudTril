@@ -5,7 +5,9 @@
 //include("lib/github.api.issues.inc.php");
 
 $sTitle = "Test Github Issues API classes";
+$sFileName = "lib/github.api.issues.inc.php";
 
-_printTestFileHeader($sTitle);
+_printTestFileHeader($sTitle, $sFileName);
+
 
 ?>

@@ -4,6 +4,7 @@
 ////
 //// CLASS - CURL BASE GET
 ////
+//   Class Implementing a CURL Connection for HTTP GET Request
 //
 class CCurlBaseGet
 {
@@ -49,6 +50,7 @@ class CCurlBaseGet
 ////
 //// CLASS - CURL BASE POST
 ////
+//   Class Implementing a CURL Connection for HTTP POST Request
 //
 class CCurlBasePost
 {

@@ -5,11 +5,19 @@ include("curl.inc.php");
 include("github.api.call.limitator.inc.php");
 
 
-//// INTERFACE - CONNECT
+//// INTERFACE - HTTPRequest
 //
-interface IConnect
+interface IHTTPRequest
 {
-	public function Connect();
+	public function GetURL();
+	public function AppendToURL($sURLPart);
+	
+	public function GetMethod();
+	
+	public function SetPostString($sPostString);
+	public function GetPostString();
+	
+	public function Request();
 }
 
 
@@ -27,8 +35,11 @@ class CHTTPRequestMethods
 ////
 //// CLASS - HTTP REQUESTER
 ////
+//   Class implementing HTTP connection and request with usage of CurlBaseGet
+//   and CurlBasePost. It is also limited to 60 requests per minute by the
+//   extension (inheritance) of CGithubAPICallLimitator.
 //
-class CHTTPRequester extends CGithubAPICallLimitator implements IConnect
+class CHTTPRequester extends CGithubAPICallLimitator implements IHTTPRequest
 {
 	private $_sURL;
 	private $_iMethod;
@@ -36,7 +47,7 @@ class CHTTPRequester extends CGithubAPICallLimitator implements IConnect
 
 	private $_oConnection;
 
-	public function __construct($sURL, $iMethod, $sPostString = "")
+	public function __construct($sURL, CHTTPRequestMethods $iMethod, $sPostString = "")
 	{
 		parent::__construct();
 	
@@ -78,7 +89,7 @@ class CHTTPRequester extends CGithubAPICallLimitator implements IConnect
 		return $this->_sPostString();
 	}
 
-	public function Connect()
+	public function Request()
 	{
 
 		switch ($this->_iMethod)

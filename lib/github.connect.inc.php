@@ -18,6 +18,8 @@ interface IGithubRequest
 {
 	public function SetAPIRequest($sAPIRequest);
 	public function GetAPIRequest();
+	
+	public function SetPostString($sPostString);
 }
 
 
@@ -36,6 +38,8 @@ class CGithubResponseTypes
 ////
 //// CLASS - GITHUB HTTP CONNECT
 ////
+//   Class implementing HTTP connection and request by extension (inheritance) of
+//   CHTTPRequester, adding a layer of service closer to the API.
 //
 class CGithubConnect extends CHTTPRequester implements IGithubResponse, IGithubRequest
 {
@@ -44,7 +48,7 @@ class CGithubConnect extends CHTTPRequester implements IGithubResponse, IGithubR
 	private $_sResponse;
 	private $_sAuthentication;
 
-	public function __construct($sBaseURL, $iMethod, $sPostString = "")
+	public function __construct($sBaseURL, CHTTPRequestMethods $iMethod = CHTTPRequestMethods::iGet, $sPostString = "")
 	{
 		parent::__construct($sBaseURL, $iMethod, $sPostString = "");
 

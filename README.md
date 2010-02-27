@@ -34,9 +34,9 @@ API classes follow the documentation at **develop.github.com** and are/will be i
 * github.api.user.inc.php
 * github.api.issues.inc.php - currently developed - not tested
 * github.api.network.inc.php
-* github.api.repository.inc.php
-* github.api.commit.inc.php
-* github.api.object.inc.php
+* github.api.repository.inc.php - currently developed - not tested
+* github.api.commit.inc.php - currently developed - not tested
+* github.api.object.inc.php - currently developed - not tested
 
 ## API Classes Usage
 
@@ -55,7 +55,7 @@ The request is assembled with **AssembleRequest()** method an data is returned w
     // /issues/comment/:user/:repo/:id
     // + comment
     
-    $oIssueComment = new CGithubIssuesComment(CGithubResponseTypes::sXML, "Cyb3r", "GudTril", 1, "This is a comment");
+    $oIssueComment = new CGithubIssuesComment(CGithubResponseTypes::sXML, "Cyb3rWeb", "GudTril", 1, "This is a comment");
 
     $oIssueComment->AssembleRequest();
 

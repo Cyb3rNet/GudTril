@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
  
  
 include("github.connect.inc.php");
@@ -226,4 +227,14 @@ class CGithubCommitsShowSpecific extends CGithubConnect implements IGithubAPISer
 }
  
  
+=======
+
+
+include("github.connect.inc.php");
+
+include("gihub.api.service.inc.php");
+
+
+z
+>>>>>>> 0.5.1
 ?>

@@ -42,6 +42,7 @@ class CGithubConnect extends CHTTPRequester implements IGithubResponse, IGithubR
 	private $_sResponseType;
 	private $_sAPIPath;
 	private $_sResponse;
+	private $_sAuthentication;
 
 	public function __construct($sBaseURL, $iMethod, $sPostString = "")
 	{
@@ -49,6 +50,8 @@ class CGithubConnect extends CHTTPRequester implements IGithubResponse, IGithubR
 
 		$this->_sResponseType = "";
 		$this->_sAPIPath = "";
+		
+		$this->_sAuthentication = "";
 	}
 
 	public function SetResponseType($sType)
@@ -73,6 +76,18 @@ class CGithubConnect extends CHTTPRequester implements IGithubResponse, IGithubR
 	public function GetAPIRequest()
 	{
 		return $this->_sAPIPath;
+	}
+	
+	public function SetAuthentication()
+	{
+		$this->_sAuthentication = "login=".GITHUB_LOGIN."&token=".GITHUB_TOKEN."&";
+	}
+	
+	public function SetPostString($sPostString)
+	{
+		$sPostString = $this->_sAuthentication.$sPostString;
+	
+		parent::SetPostString($sPostString);
 	}
 }
 

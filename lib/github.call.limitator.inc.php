@@ -1,5 +1,19 @@
 <?php
 
+
+////
+//// CLASS - LIMIT EXCEPTION
+////
+//
+class LimitException extends Exception
+{
+	public function __construct($sMsg)
+	{
+		parent::__construct($sMsg);
+	}
+}
+
+
 ////
 //// CLASS - GITHUB API CALL LIMITATOR
 ////
@@ -33,7 +47,7 @@ class CGithubAPICallLimitator
 			self::$_iCounter >= $iCallLimit
 		)
 		{
-			throws new Exception("Exceeded limit requests (".$iCallLimit." per minute)");
+			throws new LimitException("Exceeded limit requests (".$iCallLimit." per minute)");
 		}
 		else if ($iNow - self::$_iStartTime > self::iSecondsPerMinute)
 		{

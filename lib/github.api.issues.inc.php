@@ -2,13 +2,7 @@
 
 include("github.connect.inc.php");
 
-//// INTERFACE - GITHUB API SERVICE
-//
-interface IGithubAPIService
-{
-	public function AssembleRequest();
-	public function RequestService();
-}
+include("gihub.api.service.inc.php");
 
 
 ////
@@ -26,6 +20,7 @@ class CGithubIssueStates
 //// CLASS - GITHUB ISSUES - SEARCH ISSUES
 ////
 //   Search Issues
+//   /issues/search/:user/:repo/:state/:search_term
 //   GET
 //
 //   Returns:
@@ -63,14 +58,14 @@ class CGithubIssuesSearch extends CGithubConnect implements IGithubAPIService
 	{
 		parent::__construct(GITHUB_BASEURL, CHTTPRequestMethodTypes::iGet);
 		
-		$this->SetResponseType($this->_sResponseType);
+		parent::SetResponseType($this->_sResponseType);
 	
-		$this->SetAPIRequest($this->_sAPIPathURL);
+		parent::SetAPIRequest($this->_sAPIPathURL);
 	}
 	
 	public function RequestService()
 	{
-		return $this->Connect();
+		return parent::Connect();
 	}
 }
 
@@ -79,6 +74,7 @@ class CGithubIssuesSearch extends CGithubConnect implements IGithubAPIService
 //// CLASS - GITHUB ISSUES - PROJECT ISSUES LIST
 ////
 //   List a Projects Issues
+//   issues/list/:user/:repo/:state
 //   GET
 //
 //   Returns:
@@ -110,8 +106,6 @@ class CGithubIssuesProjectList extends CGithubConnect implements IGithubAPIServi
 	
 	public function __construct(CGithubResponseTypes $sResponseType, $sUser, $sRepo, CGithubStateIssues $sState)
 	{
-		parent::__construct();
-		
 		$this->_sResponseType = $sResponseType;
 		
 		$this->_sAPIPathURL = "/issues/list/".$sUser."/".$sRepo."/".$sState;
@@ -119,20 +113,16 @@ class CGithubIssuesProjectList extends CGithubConnect implements IGithubAPIServi
 	
 	public function AssembleRequest()
 	{
-		$oGithubRequest = new CGithubRequest(GITHUB_BASEURL, CHTTPRequestMethodTypes::iGet);
+		parent::__construct(GITHUB_BASEURL, CHTTPRequestMethodTypes::iGet);
 	
-		$this->SetRequest($oGithubRequest);
-		
-		$this->SetResponseType($this->_sResponseType);
+		parent::SetResponseType($this->_sResponseType);
 	
-		$this->AppendAPIURL($this->_sAPIPathURL);
+		parent::SetAPIRequest($this->_sAPIPathURL);
 	}
 	
 	public function RequestService()
 	{
-		$this->MakeRequest();
-		
-		return $this->GetResponse();
+		return parent::Connect();
 	}
 }
 
@@ -141,6 +131,7 @@ class CGithubIssuesProjectList extends CGithubConnect implements IGithubAPIServi
 //// CLASS - GITHUB ISSUES - VIEW ISSUE
 ////
 //   View an Issue
+//   issues/show/:user/:repo/:number
 //   GET
 //
 //   Returns:
@@ -164,8 +155,6 @@ class CGithubIssuesView extends CGithubConnect implements IGithubAPIService
 	
 	public function __construct(CGithubResponseTypes $sResponseType, $sUser, $sRepo, $iNumber)
 	{
-		parent::__construct();
-		
 		$this->_sResponseType = $sResponseType;
 		
 		$this->_sAPIPathURL = "/issues/show/".$sUser."/".$sRepo."/".$iNumber;
@@ -173,20 +162,16 @@ class CGithubIssuesView extends CGithubConnect implements IGithubAPIService
 	
 	public function AssembleRequest()
 	{
-		$oGithubRequest = new CGithubRequest(GITHUB_BASEURL, CHTTPRequestMethodTypes::iGet);
-	
-		$this->SetRequest($oGithubRequest);
+		parent::__construct(GITHUB_BASEURL, CHTTPRequestMethodTypes::iGet);
 		
-		$this->SetResponseType($this->_sResponseType);
+		parent::SetResponseType($this->_sResponseType);
 	
-		$this->AppendAPIURL($this->_sAPIPathURL);
+		parent::SetAPIRequest($this->_sAPIPathURL);
 	}
 	
 	public function RequestService()
 	{
-		$this->MakeRequest();
-		
-		return $this->GetResponse();
+		return parent::Connect();();
 	}
 }
 
@@ -195,6 +180,7 @@ class CGithubIssuesView extends CGithubConnect implements IGithubAPIService
 //// CLASS - GITHUB ISSUES - LIST ISSUE COMMENTS
 ////
 //   List an Issue’s Comments
+//   issues/comments/:user/:repo/:number
 //   GET
 //
 //   Returns:
@@ -220,8 +206,6 @@ class CGithubIssuesListComments extends CGithubConnect implements IGithubAPIServ
 	
 	public function __construct(CGithubResponseTypes $sResponseType, $sUser, $sRepo, $iNumber)
 	{
-		parent::__construct();
-		
 		$this->_sResponseType = $sResponseType;
 		
 		$this->_sAPIPathURL = "/issues/comments/".$sUser."/".$sRepo."/".$iNumber;
@@ -229,20 +213,16 @@ class CGithubIssuesListComments extends CGithubConnect implements IGithubAPIServ
 	
 	public function AssembleRequest()
 	{
-		$oGithubRequest = new CGithubRequest(GITHUB_BASEURL, CHTTPRequestMethodTypes::iGet);
-	
-		$this->SetRequest($oGithubRequest);
+		parent::__construct(GITHUB_BASEURL, CHTTPRequestMethodTypes::iGet);
 		
-		$this->SetResponseType($this->_sResponseType);
+		parent::SetResponseType($this->_sResponseType);
 	
-		$this->AppendAPIURL($this->_sAPIPathURL);
+		parent::SetAPIRequest($this->_sAPIPathURL);
 	}
 	
 	public function RequestService()
 	{
-		$this->MakeRequest();
-		
-		return $this->GetResponse();
+		return parent::Connect();
 	}
 }
 
@@ -251,7 +231,9 @@ class CGithubIssuesListComments extends CGithubConnect implements IGithubAPIServ
 //// CLASS - GITHUB ISSUES - OPEN ISSUE
 ////
 //   Open's an Issue
+//   issues/open/:user/:repo
 //   POST
+//   Authenticated
 /*
 
 title
@@ -281,8 +263,6 @@ class CGithubIssuesOpen extends CGithubConnect implements IGithubAPIService
 	public function __construct(CGithubResponseTypes $sResponseType, $sUser, $sRepo, $sTitle, $sBody)
 	{
 		$this->_sPost = "title=".$sTitle."&body=".$sBody;
-	
-		parent::__construct();
 		
 		$this->_sResponseType = $sResponseType;
 		
@@ -291,22 +271,21 @@ class CGithubIssuesOpen extends CGithubConnect implements IGithubAPIService
 	
 	public function AssembleRequest()
 	{
-		$oGithubRequest = new CGithubRequest(GITHUB_BASEURL, CHTTPRequestMethodTypes::iPost);
-		
-		$oGithubRequest->SetPost($this->_sPost);
-		
-		$this->SetRequest($oGithubRequest);
-		
-		$this->SetResponseType($this->_sResponseType);
 	
-		$this->AppendAPIURL($this->_sAPIPathURL);
+		parent::__construct(GITHUB_BASEURL, CHTTPRequestMethodTypes::iPost);
+		
+		parent::SetAuthentication();
+		
+		parent::SetPostString($this->_sPost);
+		
+		parent::SetResponseType($this->_sResponseType);
+	
+		parent::SetAPIRequest($this->_sAPIPathURL);
 	}
 	
 	public function RequestService()
 	{
-		$this->MakeRequest();
-		
-		return $this->GetResponse();
+		return parent::Connect();
 	}
 }
 
@@ -315,7 +294,9 @@ class CGithubIssuesOpen extends CGithubConnect implements IGithubAPIService
 //// CLASS - GITHUB ISSUES - CLOSE ISSUE
 ////
 //   Close's an Issue
+//   issues/close/:user/:repo/:number
 //   GET
+//   Authenticated
 //
 //   Returns:
 /*
@@ -336,8 +317,6 @@ class CGithubIssuesClose extends CGithubConnect implements IGithubAPIService
 	
 	public function __construct(CGithubResponseTypes $sResponseType, $sUser, $sRepo, $iNumber)
 	{
-		parent::__construct();
-		
 		$this->_sResponseType = $sResponseType;
 		
 		$this->_sAPIPathURL = "/issues/close/".$sUser."/".$sRepo."/".$iNumber;
@@ -345,20 +324,18 @@ class CGithubIssuesClose extends CGithubConnect implements IGithubAPIService
 	
 	public function AssembleRequest()
 	{
-		$oGithubRequest = new CGithubRequest(GITHUB_BASEURL, CHTTPRequestMethodTypes::iGet);
-	
-		$this->SetRequest($oGithubRequest);
+		parent::__construct(GITHUB_BASEURL, CHTTPRequestMethodTypes::iGet);
 		
-		$this->SetResponseType($this->_sResponseType);
+		parent::SetAuthentication();
+		
+		parent::SetResponseType($this->_sResponseType);
 	
-		$this->AppendAPIURL($this->_sAPIPathURL);
+		parent::SetAPIRequest($this->_sAPIPathURL);
 	}
 	
 	public function RequestService()
 	{
-		$this->MakeRequest();
-		
-		return $this->GetResponse();
+		return parent::Connect();
 	}
 }
 
@@ -367,7 +344,9 @@ class CGithubIssuesClose extends CGithubConnect implements IGithubAPIService
 //// CLASS - GITHUB ISSUES - REOPEN ISSUE
 ////
 //   Reopen's an Issue
+//   issues/reopen/:user/:repo/:number
 //   GET
+//   Authenticated
 //
 //   Returns:
 /*
@@ -388,8 +367,6 @@ class CGithubIssuesReopen extends CGithubConnect implements IGithubAPIService
 	
 	public function __construct(CGithubResponseTypes $sResponseType, $sUser, $sRepo, $iNumber)
 	{
-		parent::__construct();
-		
 		$this->_sResponseType = $sResponseType;
 		
 		$this->_sAPIPathURL = "/issues/reopen/".$sUser."/".$sRepo."/".$iNumber;
@@ -397,20 +374,19 @@ class CGithubIssuesReopen extends CGithubConnect implements IGithubAPIService
 	
 	public function AssembleRequest()
 	{
-		$oGithubRequest = new CGithubRequest(GITHUB_BASEURL, CHTTPRequestMethodTypes::iGet);
-	
-		$this->SetRequest($oGithubRequest);
+
+		parent::__construct(GITHUB_BASEURL, CHTTPRequestMethodTypes::iGet);
 		
-		$this->SetResponseType($this->_sResponseType);
+		parent::SetAuthentication();
+		
+		parent::SetResponseType($this->_sResponseType);
 	
-		$this->AppendAPIURL($this->_sAPIPathURL);
+		parent::SetAPIRequest($this->_sAPIPathURL);
 	}
 	
 	public function RequestService()
 	{
-		$this->MakeRequest();
-		
-		return $this->GetResponse();
+		return parent::Connect();
 	}
 }
 
@@ -419,9 +395,10 @@ class CGithubIssuesReopen extends CGithubConnect implements IGithubAPIService
 //// CLASS - GITHUB ISSUES - EDIT ISSUE
 ////
 //   Edit Existing Issues
+//   issues/edit/:user/:repo/:number
 //   POST
+//   Autheticated
 //
-//   HAS TO BE: AUTHENTICATED
 //   HAS TO BE: COLLABORATOR
 /*
 
@@ -439,8 +416,6 @@ class CGithubIssuesEdit extends CGithubConnect implements IGithubAPIService
 	public function __construct(CGithubResponseTypes $sResponseType, $sUser, $sRepo, $iNumber, $sTitle, $sBody)
 	{
 		$this->_sPost = "title=".$sTitle."&body=".$sBody;
-	
-		parent::__construct();
 		
 		$this->_sResponseType = $sResponseType;
 		
@@ -449,22 +424,21 @@ class CGithubIssuesEdit extends CGithubConnect implements IGithubAPIService
 	
 	public function AssembleRequest()
 	{
-		$oGithubRequest = new CGithubRequest(GITHUB_BASEURL, CHTTPRequestMethodTypes::iPost);
 	
-		$oGithubRequest->SetPost($this->_sPost);
+		parent::__construct(GITHUB_BASEURL, CHTTPRequestMethodTypes::iPost);
 	
-		$this->SetRequest($oGithubRequest);
+		parent::SetAuthentication();
+	
+		parent::SetPostString($this->_sPost);
 		
-		$this->SetResponseType($this->_sResponseType);
+		parent::SetResponseType($this->_sResponseType);
 	
-		$this->AppendAPIURL($this->_sAPIPathURL);
+		parent::SetAPIRequest($this->_sAPIPathURL);
 	}
 	
 	public function RequestService()
 	{
-		$this->MakeRequest();
-		
-		return $this->GetResponse();
+		return parent::Connect();
 	}
 }
 
@@ -473,6 +447,9 @@ class CGithubIssuesEdit extends CGithubConnect implements IGithubAPIService
 //// CLASS - GITHUB ISSUES - LIST LABELS
 ////
 //   Listing Labels
+//   issues/labels/:user/:repo
+//   GET
+//   Authenticated
 //
 //   Returns:
 /*
@@ -489,8 +466,6 @@ class CGithubIssuesListLabels extends CGithubConnect implements IGithubAPIServic
 	
 	public function __construct(CGithubResponseTypes $sResponseType, $sUser, $sRepo)
 	{
-		parent::__construct();
-		
 		$this->_sResponseType = $sResponseType;
 		
 		$this->_sAPIPathURL = "/issues/labels/".$sUser."/".$sRepo;
@@ -498,20 +473,18 @@ class CGithubIssuesListLabels extends CGithubConnect implements IGithubAPIServic
 	
 	public function AssembleRequest()
 	{
-		$oGithubRequest = new CGithubRequest(GITHUB_BASEURL, CHTTPRequestMethodTypes::iGet);
-	
-		$this->SetRequest($oGithubRequest);
+		parent::__construct(GITHUB_BASEURL, CHTTPRequestMethodTypes::iGet);
 		
-		$this->SetResponseType($this->_sResponseType);
+		parent::SetAuthentication();
+		
+		parent::SetResponseType($this->_sResponseType);
 	
-		$this->AppendAPIURL($this->_sAPIPathURL);
+		parent::SetAPIRequest($this->_sAPIPathURL);
 	}
 	
 	public function RequestService()
 	{
-		$this->MakeRequest();
-		
-		return $this->GetResponse();
+		return parent::Connect();
 	}
 }
 
@@ -520,6 +493,9 @@ class CGithubIssuesListLabels extends CGithubConnect implements IGithubAPIServic
 //// CLASS - GITHUB ISSUES - ADD LABEL
 ////
 //   Add Labels
+//   issues/label/add/:user/:repo/:label/:number
+//   GET
+//   Authenticated
 //
 //   Returns:
 /*
@@ -536,8 +512,6 @@ class CGithubIssuesAddLabel extends CGithubConnect implements IGithubAPIService
 	
 	public function __construct(CGithubResponseTypes $sResponseType, $sUser, $sRepo, $sLabel, $iNumber)
 	{
-		parent::__construct();
-		
 		$this->_sResponseType = $sResponseType;
 		
 		$this->_sAPIPathURL = "/issues/label/add/".$sUser."/".$sRepo."/".$sLabel."/".$iNumber;
@@ -545,20 +519,18 @@ class CGithubIssuesAddLabel extends CGithubConnect implements IGithubAPIService
 	
 	public function AssembleRequest()
 	{
-		$oGithubRequest = new CGithubRequest(GITHUB_BASEURL, CHTTPRequestMethodTypes::iGet);
-	
-		$this->SetRequest($oGithubRequest);
+		parent::__construct(GITHUB_BASEURL, CHTTPRequestMethodTypes::iGet);
 		
-		$this->SetResponseType($this->_sResponseType);
+		parent::SetAuthentication();
+		
+		parent::SetResponseType($this->_sResponseType);
 	
-		$this->AppendAPIURL($this->_sAPIPathURL);
+		parent::SetAPIRequest($this->_sAPIPathURL);
 	}
 	
 	public function RequestService()
 	{
-		$this->MakeRequest();
-		
-		return $this->GetResponse();
+		return parent::Connect();
 	}
 }
 
@@ -567,6 +539,9 @@ class CGithubIssuesAddLabel extends CGithubConnect implements IGithubAPIService
 //// CLASS - GITHUB ISSUES - REMOVE LABEL
 ////
 //   Remove's Labels
+//   issues/label/remove/:user/:repo/:label/:number
+//   GET
+//   Authenticated
 //
 //   Returns:
 /*
@@ -583,8 +558,6 @@ class CGithubIssuesRemoveLabel extends CGithubConnect implements IGithubAPIServi
 	
 	public function __construct(CGithubResponseTypes $sResponseType, $sUser, $sRepo, $sLabel, $iNumber)
 	{
-		parent::__construct();
-		
 		$this->_sResponseType = $sResponseType;
 		
 		$this->_sAPIPathURL = "/issues/label/remove/".$sUser."/".$sRepo."/".$sLabel."/".$iNumber;
@@ -592,20 +565,18 @@ class CGithubIssuesRemoveLabel extends CGithubConnect implements IGithubAPIServi
 	
 	public function AssembleRequest()
 	{
-		$oGithubRequest = new CGithubRequest(GITHUB_BASEURL, CHTTPRequestMethodTypes::iGet);
-	
-		$this->SetRequest($oGithubRequest);
+		parent::__construct(GITHUB_BASEURL, CHTTPRequestMethodTypes::iGet);
 		
-		$this->SetResponseType($this->_sResponseType);
+		parent::SetAuthentication();
+		
+		parent::SetResponseType($this->_sResponseType);
 	
-		$this->AppendAPIURL($this->_sAPIPathURL);
+		parent::SetAPIRequest($this->_sAPIPathURL);
 	}
 	
 	public function RequestService()
 	{
-		$this->MakeRequest();
-		
-		return $this->GetResponse();
+		return parent::Connect();
 	}
 }
 
@@ -614,7 +585,9 @@ class CGithubIssuesRemoveLabel extends CGithubConnect implements IGithubAPIServi
 //// CLASS - GITHUB ISSUES - ADD LABEL
 ////
 //   Comment on Issues
+//   /issues/comment/:user/:repo/:id
 //   POST
+//   Authenticated
 /*
 
 comment
@@ -630,8 +603,6 @@ class CGithubIssuesComment extends CGithubConnect implements IGithubAPIService
 	public function __construct(CGithubResponseTypes $sResponseType, $sUser, $sRepo, $iNumber, $sComment)
 	{
 		$this->_sPost = "comment=".$sComment;
-	
-		parent::__construct();
 		
 		$this->_sResponseType = $sResponseType;
 		
@@ -640,22 +611,21 @@ class CGithubIssuesComment extends CGithubConnect implements IGithubAPIService
 	
 	public function AssembleRequest()
 	{
-		$oGithubRequest = new CGithubRequest(GITHUB_BASEURL, CHTTPRequestMethodTypes::iPost);
 	
-		$oGithubRequest->SetPost($this->_sPost);
+		parent::__construct(GITHUB_BASEURL, CHTTPRequestMethodTypes::iPost);
 	
-		$this->SetRequest($oGithubRequest);
+		parent::SetAuthentication();
+	
+		parent::SetPostString($this->_sPost);
 		
-		$this->SetResponseType($this->_sResponseType);
+		parent::SetResponseType($this->_sResponseType);
 	
-		$this->AppendAPIURL($this->_sAPIPathURL);
+		parent::AppendAPIURL($this->_sAPIPathURL);
 	}
 	
 	public function RequestService()
 	{
-		$this->MakeRequest();
-		
-		return $this->GetResponse();
+		return parent::Connect();
 	}
 }
 

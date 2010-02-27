@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
  
  
 include("github.connect.inc.php");

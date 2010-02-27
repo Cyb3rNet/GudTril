@@ -9,7 +9,7 @@
 >> Uses github.com API
 >> Uses CURL library
 
-# Another PHP Github API Wrapper Librairy
+# Another PHP Github API Wrapper library
 
 I needed to implement for a client some fonctionalities with the Github API but didn't like the suggested PHP library, so I decided to build another one on my time and to share it with the world. I'm not too happy with most of the implementation and there's still alot to do, but it paves the way to offer a full PHP 5 Github API Wrapper library for the masses.
 

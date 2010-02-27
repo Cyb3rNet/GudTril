@@ -630,4 +630,23 @@ class CGithubIssuesComment extends CGithubConnect implements IGithubAPIService
 }
 
 
+////
+//// CLASS - GITHUB ISSUES - CLASSES MERGE
+////
+//
+class CGithubIssues implements IGithubAPIMerge
+{
+	public function __constructor(CGithubResponseTypes $sResponseType, $bAlwaysAuthenticate = false)
+	{
+		$this->_sResponseType = $sResponseType;
+		$this->_bAlwaysAutheticate
+	}
+	
+	public function Search()
+	{
+	
+	}
+}
+
+
 ?>

@@ -1,17 +1,17 @@
 >> GudTril by Cyb3r
 >>
->> PHP 5 Github API Librairy
+>> PHP 5 Github API Library
 >>
->> Version 0.2
+>> Version 0.3
 >>
 >> MIT Licence
 >>
 >> Uses github.com API
->> Uses CURL librairy
+>> Uses CURL library
 
 # Another PHP Github API Wrapper Librairy
 
-I needed to implement for a client some fonctionalities with the Github API but didn't like the suggested PHP librairy, so I decided to build another one on my time and to share it with the world. I'm not too happy with most of the implementation and there's still alot to do, but it paves the way to offer a full PHP 5 Github API Wrapper librairy for the masses.
+I needed to implement for a client some fonctionalities with the Github API but didn't like the suggested PHP library, so I decided to build another one on my time and to share it with the world. I'm not too happy with most of the implementation and there's still alot to do, but it paves the way to offer a full PHP 5 Github API Wrapper library for the masses.
 
 Fork it and play with it!
 
@@ -71,7 +71,7 @@ I've even implemented a counter as the base curl class for limiting the the numb
 
 ## Tests
 
-I've implemented a test case for the files and classes of the librairy. To run the tests, load in a browser the file **test.github.api.php**.
+I've implemented a test case for the files and classes of the library. To run the tests, load in a browser the file **test.github.api.php**.
 
 ## More Information
 

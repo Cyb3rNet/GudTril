@@ -58,9 +58,9 @@ class CHTTPRequester extends CGithubAPICallLimitator implements IConnect
 		return $this->_sURL;
 	}
 	
-	public function AppendToURL($sPath)
+	public function AppendToURL($sURLPart)
 	{
-		$this->_sURL .= $sPath;
+		$this->_sURL .= $sURLPart;
 	}
 	
 	public function GetMethod()

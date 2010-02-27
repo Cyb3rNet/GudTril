@@ -2,7 +2,7 @@
 
 include("github.connect.inc.php");
 
-include("github.api.service.inc.php");
+include("github.interface.api.service.inc.php");
 
 
 ////

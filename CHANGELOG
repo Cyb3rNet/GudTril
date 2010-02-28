@@ -1,3 +1,6 @@
+0.7
+	github.api.commit.inc.php - Developed and Tested
+	This module works best in non ecrypted HTTP
 0.6
 	github.api.repository.inc.php - Developed and Tested
 	Only DeleteRepo is not working - Submitted an inquiry to GitHub Groups

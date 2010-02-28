@@ -1,8 +1,8 @@
->> GudTril by Cyb3r
+>> GudTril by Serafim Junior Dos Santos Cyb3r Web
 >>
 >> PHP 5 Github API Library
 >>
->> Version 0.3
+>> Version 0.5
 >>
 >> MIT Licence
 >>
@@ -33,7 +33,6 @@ API classes follow the documentation at **develop.github.com** and are/will be i
 
 * github.api.user.inc.php
 * github.api.issues.inc.php - currently developed - not tested
-* github.api.network.inc.php
 * github.api.repository.inc.php - currently developed - not tested
 * github.api.commit.inc.php - currently developed - not tested
 * github.api.object.inc.php - currently developed - not tested
@@ -55,11 +54,11 @@ The request is assembled with **AssembleRequest()** method an data is returned w
     // /issues/comment/:user/:repo/:id
     // + comment
     
-    $oIssueComment = new CGithubIssuesComment(CGithubResponseTypes::sXML, "Cyb3rWeb", "GudTril", 1, "This is a comment");
-
-    $oIssueComment->AssembleRequest();
-
-    $sXMLResponse = $oIssueComment->RequestService();
+	$bAuthenticate = true;
+	
+    $oGHIssues = new CGithubIssues(CGithubResponseTypes::sXML, $bAuthenticate);
+	
+	$sResponse = $oGHIssues->CommentOnIssue("Cyb3rWeb", "GudTril", 1, "This is a comment");
 
 ## Authentication
 

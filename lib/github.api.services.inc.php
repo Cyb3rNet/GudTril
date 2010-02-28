@@ -104,14 +104,24 @@ class CGithubAPIRequestServices implements IGithubAPIRequestServices
 	{
 		$this->_bForceAuthenticate = $bAuthenticate;
 	}
+	
+	public function GetURL()
+	{
+		if (!strlen($this->_sURL))
+			$this->_sURL = "request.service/not/called/yet";
+			
+		return $this->_sURL;
+	}
 
 	Public function RequestService($sAPIPathURL, $sDefaultMethod, $DefaultAutheticated = false, $sPostString = "")
 	{
 		$bAuthenticate |= $this->_bForceAuthenticate |= $DefaultAutheticated;
 	
 		$this->_oGHS = new CGithubAPIRequester($sAPIPathURL, $sDefaultMethod, $this->_sResponseType, $bAuthenticate);
-
+		
 		$this->_oGHS->AssembleRequest($sPostString);
+
+		$this->_sURL = $this->_oGHS->GetURL();
 		
 		$sResponse = $this->_oGHS->RequestService();
 		

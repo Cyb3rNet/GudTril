@@ -84,6 +84,8 @@ class CGithubConnect extends CHTTPRequester implements IGithubResponse, IGithubR
 	
 	public function SetAuthentication()
 	{
+		parent::SetHTTPS();
+		
 		$this->_sAuthentication = "login=".GITHUB_LOGIN."&token=".GITHUB_TOKEN."&";
 	}
 	

@@ -50,18 +50,15 @@ class CHTTPRequester extends CGithubAPICallLimitator implements IHTTPRequest
 	public function __construct($sURL, $iMethod, $sPostString = "")
 	{
 		parent::__construct();
-	
-		if (FORCE_HTTPS)
-			$sURL = $this->_SetHTTPS($sURL);
 
 		$this->_sURL = $sURL;
 		$this->_iMethod = $iMethod;
 		$this->_sPostString = $sPostString;
 	}
 	
-	private function _SetHTTPS($sURL)
+	public function SetHTTPS()
 	{
-		return str_replace('http://', 'https://', $sURL);
+		return str_replace('http://', 'https://', $this->_sURL);
 	}
 	
 	public function GetURL()
@@ -90,7 +87,9 @@ class CHTTPRequester extends CGithubAPICallLimitator implements IHTTPRequest
 	}
 
 	public function Request()
-	{
+	{	
+		if (FORCE_HTTPS)
+			$this->_sURL = $this->SetHTTPS();
 
 		switch ($this->_iMethod)
 		{

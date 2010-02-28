@@ -86,6 +86,7 @@ $oTCH = new CTestClassHelper("CGithubRepository", array($sResponseType, $bAuthen
 
 $sRepo = "git-close";
 $oTCH->RegisterMethodWithReturn("DeleteRepo", array($sRepo));
+$oTCH->RegisterMethodWithReturn("GetURL", array());
 
 //$sRepo, $sDeleteToken
 //$oTCH->RegisterMethodWithReturn("ConfirmDeleteRepo", array($sRepo, $sDeleteToken));

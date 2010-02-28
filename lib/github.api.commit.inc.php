@@ -3,10 +3,22 @@
  
 require_once("github.connect.inc.php");
  
-require_once("github.interface.api.service.inc.php");
+require_once("github.api.services.inc.php");
  
  
- 
+////
+//// CLASS - GITHUB COMMIT API SERVICES
+////
+//   Class implementing the GitHUb Commit API Services
+//
+class CGithubCommit extends CGithubAPIRequestServices
+{
+	public function __constructor($sResponseType, $bAuthenticate = false)
+	{
+		parent::__construct($sResponseType, $bAuthenticate);
+	}
+	
+	
 ////
 //// CLASS - GITHUB COMMITS - LISTING ON A BRANCH
 ////
@@ -50,32 +62,14 @@ commits:
     email: tom@mojombo.com
  
 */
-class CGithubCommitsListBranch extends CGithubConnect implements IGithubAPIService
-{
-	private $_sResponseType;
-	private $_sAPIPathURL;
- 
-	public function __construct(CGithubResponseTypes $sResponseType, $sUser, $sRepoName, $sBranch)
+	public function ListOnBranch($sUser, $sRepoName, $sBranch)
 	{
-		$this->_sResponseType = $sResponseType;
- 
-		$this->_sAPIPathURL = "commits/list/".$sUser."/".$sRepoName."/".$sBranch;
+		$sAPIPathURL = "/commits/list/".$sUser."/".$sRepoName."/".$sBranch;
+		
+		$sDefaultMethod = CHTTPRequestMethods::iGet;
+		
+		return $this->RequestService($sAPIPathURL, $sDefaultMethod);
 	}
- 
-	public function AssembleRequest()
-	{
-		parent::__construct(GITHUB_BASEURL, CHTTPRequestMethodTypes::iGet);
- 
-		parent::SetResponseType($this->_sResponseType);
- 
-		parent::SetAPIRequest($this->_sAPIPathURL);
-	}
- 
-	public function RequestService()
-	{
-		return parent::Connect();
-	}
-}
  
  
 ////
@@ -121,32 +115,14 @@ commits:
     email: tom@mojombo.com
  
 */
-class CGithubCommitsListFile extends CGithubConnect implements IGithubAPIService
-{
-	private $_sResponseType;
-	private $_sAPIPathURL;
- 
-	public function __construct(CGithubResponseTypes $sResponseType, $sUser, $sRepoName, $sBranch, $sFilePath)
+	public function ListOnFile($sUser, $sRepoName, $sBranch, $sFilePath)
 	{
-		$this->_sResponseType = $sResponseType;
- 
-		$this->_sAPIPathURL = "/commits/list/".$sUser."/".$sRepoName."/".$sBranch."/".$sFilePath;
+		$sAPIPathURL = "/commits/list/".$sUser."/".$sRepoName."/".$sBranch."/".$sFilePath;
+		
+		$sDefaultMethod = CHTTPRequestMethods::iGet;
+		
+		return $this->RequestService($sAPIPathURL, $sDefaultMethod);
 	}
- 
-	public function AssembleRequest()
-	{
-		parent::__construct(GITHUB_BASEURL, CHTTPRequestMethodTypes::iGet);
- 
-		parent::SetResponseType($this->_sResponseType);
- 
-		parent::SetAPIRequest($this->_sAPIPathURL);
-	}
- 
-	public function RequestService()
-	{
-		return parent::Connect();
-	}
-}
  
  
  
@@ -198,30 +174,13 @@ $ curl http://github.com/api/v2/json/commits/show/mojombo/grit/5071bf9fbfb81778c
 }
  
 */
-class CGithubCommitsShowSpecific extends CGithubConnect implements IGithubAPIService
-{
-	private $_sResponseType;
-	private $_sAPIPathURL;
- 
-	public function __construct(CGithubResponseTypes $sResponseType, $sUseryyy, $sRepoName, $sSHA)
+	public function ShowSpecific($sUser, $sRepoName, $sSHA)
 	{
-		$this->_sResponseType = $sResponseType;
- 
-		$this->_sAPIPathURL = "commits/show/".$sUser."/".$sRepoName."/".$sSHA;
-	}
- 
-	public function AssembleRequest()
-	{
-		parent::__construct(GITHUB_BASEURL, CHTTPRequestMethodTypes::iGet);
- 
-		parent::SetResponseType($this->_sResponseType);
- 
-		parent::SetAPIRequest($this->_sAPIPathURL);
-	}
- 
-	public function RequestService()
-	{
-		return parent::Connect();
+		$sAPIPathURL = "/commits/show/".$sUser."/".$sRepoName."/".$sSHA;
+		
+		$sDefaultMethod = CHTTPRequestMethods::iGet;
+		
+		return $this->RequestService($sAPIPathURL, $sDefaultMethod);
 	}
 }
  

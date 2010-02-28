@@ -1,3 +1,6 @@
+0.6
+	github.api.repository.inc.php - Developed and Tested
+	Only DeleteRepo is not working - Submitted an inquiry to GitHub Groups
 0.5
 	github.api.issues.inc.php - Developed and Tested
 0.4

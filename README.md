@@ -2,7 +2,7 @@
 >>
 >> PHP 5 Github API Library
 >>
->> Version 0.5
+>> Version 0.7
 >>
 >> MIT Licence
 >>
@@ -32,9 +32,9 @@ Instantiate an object of a class contained in the files mentioned in the next se
 API classes follow the documentation at **develop.github.com** and are/will be in the following files:
 
 * github.api.user.inc.php
-* github.api.issues.inc.php - currently developed - not tested
-* github.api.repository.inc.php - currently developed - not tested
-* github.api.commit.inc.php - currently developed - not tested
+* github.api.issues.inc.php - currently developed - tested
+* github.api.repository.inc.php - currently developed - tested
+* github.api.commit.inc.php - currently developed - tested
 * github.api.object.inc.php - currently developed - not tested
 
 ## API Classes Usage
@@ -62,7 +62,7 @@ The request is assembled with **AssembleRequest()** method an data is returned w
 
 ## Authentication
 
-For the moment, all requests are authenticated.
+Authentification is done by passing a boolean value at the constructor of the APi modules or automatically set by default on some methods. When Authetification is valued the connexion goes on HTTPS mode. HTTPS can be forced on the configuration file: `github.confs.inc.php`.
 
 ## API Limitation
 

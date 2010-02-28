@@ -1,3 +1,7 @@
+0.9
+	github.api.user.inc.php - Developed and Tested
+	curl.inc.php is renamed to http.base.inc.php
+	Throws an HTTPException if response code is not 200
 0.8
 	github.api.object.inc.php - Developped and Tested
 	This module works best in non encrypted HTTP

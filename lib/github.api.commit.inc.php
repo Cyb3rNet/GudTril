@@ -20,7 +20,7 @@ class CGithubCommit extends CGithubAPIRequestServices
 	
 	
 ////
-//// CLASS - GITHUB COMMITS - LISTING ON A BRANCH
+//// METHOD - GITHUB COMMITS - LISTING ON A BRANCH
 ////
 //   Listing Commits on a Branch
 //   commits/list/:user_id/:repository/:branch
@@ -75,7 +75,7 @@ commits:
  
  
 ////
-//// CLASS - GITHUB COMMITS - LISTING ON A FILE
+//// METHOD - GITHUB COMMITS - LISTING ON A FILE
 ////
 //   Listing Commits for a File
 //   commits/list/:user_id/:repository/:branch/*path
@@ -131,7 +131,7 @@ commits:
  
  
 ////
-//// CLASS - GITHUB COMMITS - SHOW SPECIFIC
+//// METHOD - GITHUB COMMITS - SHOW SPECIFIC
 ////
 //   Showing a Specific Commit
 //   commits/show/:user_id/:repository/:sha

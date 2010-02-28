@@ -30,7 +30,7 @@ class CGithubRepository extends CGithubAPIRequestServices
 	}
 
 ////
-//// CLASS - GITHUB REPOSITORIES - SEARCH REPOSITORIES
+//// METHOD - GITHUB REPOSITORIES - SEARCH REPOSITORIES
 ////
 //   Searching Repositories
 //   GET
@@ -83,7 +83,7 @@ repositories:
 
 
 ////
-//// CLASS - GITHUB REPOSITORIES - SHOW REPOSITORY INFO
+//// METHOD - GITHUB REPOSITORIES - SHOW REPOSITORY INFO
 ////
 //   Show Repo Info
 //   repos/show/:user/:repo
@@ -119,7 +119,7 @@ repository:
 
 
 ////
-//// CLASS - GITHUB REPOSITORIES - LIST ALL USER REPOSITORIES
+//// METHOD - GITHUB REPOSITORIES - LIST ALL USER REPOSITORIES
 ////
 //   List All Repositories
 //   repos/show/:user
@@ -164,7 +164,7 @@ calls to the git binary.
 
 
 ////
-//// CLASS - GITHUB REPOSITORIES - WATCH REPOSITORY
+//// METHOD - GITHUB REPOSITORIES - WATCH REPOSITORY
 ////
 //   Watch Repository
 //   repos/watch/:user/:repo
@@ -183,7 +183,7 @@ calls to the git binary.
 
 
 ////
-//// CLASS - GITHUB REPOSITORIES - UNWATCH REPOSITORY
+//// METHOD - GITHUB REPOSITORIES - UNWATCH REPOSITORY
 ////
 //   UnWatch Repository
 //   repos/unwatch/:user/:repo
@@ -203,7 +203,7 @@ calls to the git binary.
 	
 
 ////
-//// CLASS - GITHUB REPOSITORIES - FORK A REPOSITORY
+//// METHOD - GITHUB REPOSITORIES - FORK A REPOSITORY
 ////
 //   Forking Repositories
 //   repos/fork/:user/:repo
@@ -240,7 +240,7 @@ repository:
 
 
 ////
-//// CLASS - GITHUB REPOSITORIES - CREATE REPOSITORY
+//// METHOD - GITHUB REPOSITORIES - CREATE REPOSITORY
 ////
 //   Creating a Repository
 //   repos/create
@@ -271,7 +271,7 @@ public			=> 1 for public, 0 for private
 
 
 ////
-//// CLASS - GITHUB REPOSITORIES - DELETE REPOSITORY
+//// METHOD - GITHUB REPOSITORIES - DELETE REPOSITORY
 ////
 //   Deleting a Repository
 //   repos/delete/:repo
@@ -313,7 +313,7 @@ delete_token
 
 
 ////
-//// CLASS - GITHUB REPOSITORIES - SET REPOSITORY PRIVATE
+//// METHOD - GITHUB REPOSITORIES - SET REPOSITORY PRIVATE
 ////
 //   Repository Visibility - Set Private
 //   repos/set/private/:repo
@@ -332,7 +332,7 @@ delete_token
 
 
 ////
-//// CLASS - GITHUB REPOSITORIES - SET REPOSITORY PUBLIC
+//// METHOD - GITHUB REPOSITORIES - SET REPOSITORY PUBLIC
 ////
 //   Repository Visibility - Set Public
 //   repos/set/public/:repo
@@ -351,7 +351,7 @@ delete_token
 
 
 ////
-//// CLASS - GITHUB REPOSITORIES - GET REPOSITORY DEPLOY KEYS
+//// METHOD - GITHUB REPOSITORIES - GET REPOSITORY DEPLOY KEYS
 ////
 //   Get Deploy Keys
 //   repos/keys/:repo
@@ -387,7 +387,7 @@ OxFKoCuyauVCnX12N7GUR29L//MWmbL+bDdEg/HHnmZWkwpaZhC/rsqqylZobpZsUcAKZ7f
 
 
 ////
-//// CLASS - GITHUB REPOSITORIES - ADD REPOSITORY DEPLOY KEY
+//// METHOD - GITHUB REPOSITORIES - ADD REPOSITORY DEPLOY KEY
 ////
 //   Add Deploy Key
 //   repos/key/:repo/add
@@ -416,7 +416,7 @@ key		=> public key data
 
 
 ////
-//// CLASS - GITHUB REPOSITORIES - REMOVE REPOSITORY DEPLOY KEY
+//// METHOD - GITHUB REPOSITORIES - REMOVE REPOSITORY DEPLOY KEY
 ////
 //   Remove Deploy Key
 //   repos/key/:repo/remove
@@ -444,7 +444,7 @@ id 	=> id of the key
 
 
 ////
-//// CLASS - GITHUB REPOSITORIES - LIST COLLABORATORS
+//// METHOD - GITHUB REPOSITORIES - LIST COLLABORATORS
 ////
 //   List Collaborators
 //   repos/show/:user/:repo/collaborators
@@ -470,7 +470,7 @@ id 	=> id of the key
 
 
 ////
-//// CLASS - GITHUB REPOSITORIES - ADD COLLABORATOR
+//// METHOD - GITHUB REPOSITORIES - ADD COLLABORATOR
 ////
 //   Add Collaborator
 //   repos/collaborators/:repo/add/:user
@@ -490,7 +490,7 @@ id 	=> id of the key
 
 
 ////
-//// CLASS - GITHUB REPOSITORIES - REMOVE COLLABORATOR
+//// METHOD - GITHUB REPOSITORIES - REMOVE COLLABORATOR
 ////
 //   Remove Collaborator
 //   repos/collaborators/:repo/remove/:user
@@ -510,7 +510,7 @@ id 	=> id of the key
 
 
 ////
-//// CLASS - GITHUB REPOSITORIES - LIST NETWORK
+//// METHOD - GITHUB REPOSITORIES - LIST NETWORK
 ////
 //   Network
 //   repos/show/:user/:repo/network
@@ -556,7 +556,7 @@ network:
 
 
 ////
-//// CLASS - GITHUB REPOSITORIES - LANGUAGE BREAKDOWN
+//// METHOD - GITHUB REPOSITORIES - LANGUAGE BREAKDOWN
 ////
 //   Language Breakdown
 //   /repos/show/:user/:repo/languages
@@ -582,7 +582,7 @@ languages:
 
 
 ////
-//// CLASS - GITHUB REPOSITORIES - SHOW TAGS
+//// METHOD - GITHUB REPOSITORIES - SHOW TAGS
 ////
 //   Repository Refs
 //   repos/show/:user/:repo/tags
@@ -611,7 +611,7 @@ tags:
 
 
 ////
-//// CLASS - GITHUB REPOSITORIES - SHOW BRANCHES
+//// METHOD - GITHUB REPOSITORIES - SHOW BRANCHES
 ////
 //   Repository Refs - Branches
 //   repos/show/:user/:repo/branches

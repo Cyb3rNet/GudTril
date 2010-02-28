@@ -208,7 +208,7 @@ issue:
 
 
 ////
-//// CLASS - GITHUB ISSUES - CLOSE ISSUE
+//// METHOD - GITHUB ISSUES - CLOSE ISSUE
 ////
 //   Close's an Issue
 //   issues/close/:user/:repo/:number

@@ -3,11 +3,24 @@
  
 require_once("github.connect.inc.php");
  
-require_once("gihub.interface.api.service.inc.php");
+require_once("github.api.services.inc.php");
 
 
 ////
-//// CLASS - GITHUB OBJECT - TREE CONTENT
+//// CLASS - GITHUB OBJECT API SERVICES
+////
+//   Class implementing the GitHUb Object API Services
+//
+class CGithubObject extends CGithubAPIRequestServices
+{
+	public function __constructor($sResponseType, $bAuthenticate = false)
+	{
+		parent::__construct($sResponseType, $bAuthenticate);
+	}
+	
+	
+////
+//// METHOD - GITHUB OBJECT - TREE CONTENT
 ////
 //   Trees
 //   tree/show/:user/:repo/:tree_sha
@@ -59,36 +72,20 @@ tree:
   type: blob
 
 */
-class CGithubObjectShowTree extends CGithubConnect implements IGithubAPIService
-{
-	private $_sResponseType;
-	private $_sAPIPathURL;
- 
-	public function __construct(CGithubResponseTypes $sResponseType, $sUser, $sRepoName, $sTreeSHA)
+	public function ShowTree($sUser, $sRepoName, $sTreeSHA)
 	{
-		$this->_sResponseType = $sResponseType;
- 
-		$this->_sAPIPathURL = "/tree/show/".$sUser."/".$sRepoName."/".$sTreeSHA;
+		$sAPIPathURL = "/tree/show/".$sUser."/".$sRepoName."/".$sTreeSHA;
+		
+		$sDefaultMethod = CHTTPRequestMethods::iGet;
+		
+		$bAuthenticate = false;
+		
+		return $this->RequestService($sAPIPathURL, $sDefaultMethod, $bAuthenticate);
 	}
- 
-	public function AssembleRequest()
-	{
-		parent::__construct(GITHUB_BASEURL, CHTTPRequestMethodTypes::iGet);
- 
-		parent::SetResponseType($this->_sResponseType);
- 
-		parent::SetAPIRequest($this->_sAPIPathURL);
-	}
- 
-	public function RequestService()
-	{
-		return parent::Connect();
-	}
-}
 
-
+	
 ////
-//// CLASS - GITHUB OBJECT - BLOB CONTENT BY TREE SHA
+//// METHOD - GITHUB OBJECT - BLOB CONTENT BY TREE SHA
 ////
 //   Blobs - Blob Content By Tree SHA
 //   blob/show/:user/:repo/:tree_sha/:path
@@ -112,36 +109,20 @@ blob:
       http://groups.google.com/group/facebox/
 
 */
-class CGithubObjectShowBlobByTreeSHA extends CGithubConnect implements IGithubAPIService
-{
-	private $_sResponseType;
-	private $_sAPIPathURL;
- 
-	public function __construct(CGithubResponseTypes $sResponseType, $sUser, $sRepoName, $sTreeSHA, $sPath)
+	public function BlobByTreeSHA($sUser, $sRepoName, $sTreeSHA, $sPath)
 	{
-		$this->_sResponseType = $sResponseType;
- 
-		$this->_sAPIPathURL = "/blob/show/".$sUser."/".$sRepoName."/".$sTreeSHA."/".$sPath;
+		$sAPIPathURL = "/blob/show/".$sUser."/".$sRepoName."/".$sTreeSHA."/".$sPath;
+		
+		$sDefaultMethod = CHTTPRequestMethods::iGet;
+		
+		$bAuthenticate = false;
+		
+		return $this->RequestService($sAPIPathURL, $sDefaultMethod, $bAuthenticate);
 	}
- 
-	public function AssembleRequest()
-	{
-		parent::__construct(GITHUB_BASEURL, CHTTPRequestMethodTypes::iGet);
- 
-		parent::SetResponseType($this->_sResponseType);
- 
-		parent::SetAPIRequest($this->_sAPIPathURL);
-	}
- 
-	public function RequestService()
-	{
-		return parent::Connect();
-	}
-}
 
 
 ////
-//// CLASS - GITHUB OBJECT - LIST ALL BLOBS
+//// METHOD - GITHUB OBJECT - LIST ALL BLOBS
 ////
 //   Blobs - List Blobs
 //   blob/all/:user/:repo/:tree_sha
@@ -183,36 +164,20 @@ blobs:
   remote.html: 98d3e92373d1bc5
 
 */
-class CGithubObjectListBlobs extends CGithubConnect implements IGithubAPIService
-{
-	private $_sResponseType;
-	private $_sAPIPathURL;
- 
-	public function __construct(CGithubResponseTypes $sResponseType, $sUser, $sRepoName, $sTreeSHA)
+	public function ListBlobs($sUser, $sRepoName, $sTreeSHA)
 	{
-		$this->_sResponseType = $sResponseType;
- 
-		$this->_sAPIPathURL = "/blob/all/".$sUser."/".$sRepoName."/".$sTreeSHA;
+		$sAPIPathURL = "/blob/all/".$sUser."/".$sRepoName."/".$sTreeSHA;
+		
+		$sDefaultMethod = CHTTPRequestMethods::iGet;
+		
+		$bAuthenticate = false;
+		
+		return $this->RequestService($sAPIPathURL, $sDefaultMethod, $bAuthenticate);
 	}
- 
-	public function AssembleRequest()
-	{
-		parent::__construct(GITHUB_BASEURL, CHTTPRequestMethodTypes::iGet);
- 
-		parent::SetResponseType($this->_sResponseType);
- 
-		parent::SetAPIRequest($this->_sAPIPathURL);
-	}
- 
-	public function RequestService()
-	{
-		return parent::Connect();
-	}
-}
 
 
 ////
-//// CLASS - GITHUB OBJECT - SHOW BLOB
+//// METHOD - GITHUB OBJECT - SHOW BLOB
 ////
 //   Raw Git Data
 //   blob/show/:user/:repo/:sha
@@ -224,30 +189,15 @@ class CGithubObjectListBlobs extends CGithubConnect implements IGithubAPIService
 A Blob
 
 */
-class CGithubObjectShowBlob extends CGithubConnect implements IGithubAPIService
-{
-	private $_sResponseType;
-	private $_sAPIPathURL;
- 
-	public function __construct(CGithubResponseTypes $sResponseType, $sUser, $sRepoName, $sSHA)
+	public function ShowBlob($sUser, $sRepoName, $sSHA)
 	{
-		$this->_sResponseType = $sResponseType;
- 
-		$this->_sAPIPathURL = "/blob/show/".$sUser."/".$sRepoName."/".$sSHA;
-	}
- 
-	public function AssembleRequest()
-	{
-		parent::__construct(GITHUB_BASEURL, CHTTPRequestMethodTypes::iGet);
- 
-		parent::SetResponseType($this->_sResponseType);
- 
-		parent::SetAPIRequest($this->_sAPIPathURL);
-	}
- 
-	public function RequestService()
-	{
-		return parent::Connect();
+		$sAPIPathURL = "/blob/show/".$sUser."/".$sRepoName."/".$sSHA;
+		
+		$sDefaultMethod = CHTTPRequestMethods::iGet;
+		
+		$bAuthenticate = false;
+		
+		return $this->RequestService($sAPIPathURL, $sDefaultMethod, $bAuthenticate);
 	}
 }
 

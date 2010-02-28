@@ -5,15 +5,15 @@
 //// GITHUB LOGIN AND TOKEN CONSTANTS
 ////
 //
-define('GITHUB_LOGIN', '');
-define('GITHUB_TOKEN', '');
+define('GITHUB_LOGIN', 'Cyb3rWeb');
+define('GITHUB_TOKEN', '6f2350476fd77cf8976963866e028172');
 
 
 ////
 //// HTTPS LOGIN
 ////
 //
-define('FORCE_HTTPS', 0);
+define('FORCE_HTTPS', 1);
 
 
 ////

@@ -17,7 +17,7 @@ interface IGithubAPIConnection
 //
 interface IGithubAPIRequestServices
 {
-	public function SetResponseType(CGithubResponseTypes $sResponseType);
+	public function SetResponseType($sResponseType);
 	public function SetAuthenticate($bAuthenticate);
 	Public function RequestService($sAPIPathURL, $sDefaultMethod, $sPostString = "");
 }
@@ -36,7 +36,7 @@ class CGithubAPIRequester extends CGithubConnect implements IGithubAPIConnection
 	private $_bAuthenticate;
 	private $_iRequestMethod;
 
-	public function __construct($sAPIPathURL, CHTTPRequestMethods $iDefaultRequestMethod, CGithubResponseTypes $sResponseType, $bAuthenticate)
+	public function __construct($sAPIPathURL, $iDefaultRequestMethod, $sResponseType, $bAuthenticate)
 	{
 		$this->_sAPIPathURL = $sAPIPathURL;
 		
@@ -87,27 +87,29 @@ class CGithubAPIRequestServices implements IGithubAPIRequestServices
 	private $_oGHS;
 
 	private $_sResponseType;
-	private $_bAuthenticate;
+	private $_bForceAuthenticate;
 	
-	public function __construct(CGithubResponseTypes $sResponseType, $bAuthenticate = false)
+	public function __construct($sResponseType, $bForceAuthenticate = false)
 	{
 		$this->_sResponseType = $sResponseType;
-		$this->_bAuthenticate = $bAuthenticate;
+		$this->_bForceAuthenticate = $bForceAuthenticate;
 	}
 
-	public function SetResponseType(CGithubResponseTypes $sResponseType)
+	public function SetResponseType($sResponseType)
 	{
 		$this->_sResponseType = $sResponseType;
 	}
 
 	public function SetAuthenticate($bAuthenticate)
 	{
-		$this->_bAuthenticate = $bAuthenticate;
+		$this->_bForceAuthenticate = $bAuthenticate;
 	}
 
-	Public function RequestService($sAPIPathURL, $sDefaultMethod, $sPostString = "")
+	Public function RequestService($sAPIPathURL, $sDefaultMethod, $DefaultAutheticated = false, $sPostString = "")
 	{
-		$this->_oGHS = new CGithubAPIRequester($sAPIPathURL, $sDefaultMethod, $this->_sResponseType, $this->_bAuthenticate);
+		$bAuthenticate |= $this->_bForceAuthenticate |= $DefaultAutheticated;
+	
+		$this->_oGHS = new CGithubAPIRequester($sAPIPathURL, $sDefaultMethod, $this->_sResponseType, $bAuthenticate);
 
 		$this->_oGHS->AssembleRequest($sPostString);
 		

@@ -202,7 +202,9 @@ issue:
 		
 		$sDefaultMethod = CHTTPRequestMethodTypes::iPost;
 		
-		return $this->RequestService($sAPIPathURL, $sDefaultMethod, $sPost);
+		$bAuthenticate = true;
+		
+		return $this->RequestService($sAPIPathURL, $sDefaultMethod, $bAuthenticate, $sPost);
 	}
 
 
@@ -232,7 +234,9 @@ issue:
 		
 		$sDefaultMethod = CHTTPRequestMethodTypes::iGet;
 		
-		return $this->RequestService($sAPIPathURL, $sDefaultMethod);
+		$bAuthenticate = true;
+		
+		return $this->RequestService($sAPIPathURL, $sDefaultMethod, $bAuthenticate);
 	}
 
 
@@ -262,7 +266,9 @@ issue:
 		
 		$sDefaultMethod = CHTTPRequestMethodTypes::iGet;
 		
-		return $this->RequestService($sAPIPathURL, $sDefaultMethod);
+		$bAuthenticate = true;
+		
+		return $this->RequestService($sAPIPathURL, $sDefaultMethod, $bAuthenticate);
 	}
 
 
@@ -289,7 +295,9 @@ body
 		
 		$sDefaultMethod = CHTTPRequestMethodTypes::iPost;
 		
-		return $this->RequestService($sAPIPathURL, $sDefaultMethod, $sPost);
+		$bAuthenticate = true;
+		
+		return $this->RequestService($sAPIPathURL, $sDefaultMethod, $bAuthenticate, $sPost);
 	}
 
 
@@ -315,7 +323,9 @@ labels:
 		
 		$sDefaultMethod = CHTTPRequestMethodTypes::iGet;
 		
-		return $this->RequestService($sAPIPathURL, $sDefaultMethod);
+		$bAuthenticate = true;
+		
+		return $this->RequestService($sAPIPathURL, $sDefaultMethod, $bAuthenticate);
 	}
 
 
@@ -341,7 +351,9 @@ labels:
 		
 		$sDefaultMethod = CHTTPRequestMethodTypes::iGet;
 		
-		return $this->RequestService($sAPIPathURL, $sDefaultMethod);
+		$bAuthenticate = true;
+		
+		return $this->RequestService($sAPIPathURL, $sDefaultMethod,$bAuthenticate);
 	}
 
 
@@ -367,7 +379,9 @@ labels:
 		
 		$sDefaultMethod = CHTTPRequestMethodTypes::iGet;
 		
-		return $this->RequestService($sAPIPathURL, $sDefaultMethod);
+		$bAuthenticate = true;
+		
+		return $this->RequestService($sAPIPathURL, $sDefaultMethod, $bAuthenticate);
 	}
 
 
@@ -391,7 +405,9 @@ comment
 		
 		$sDefaultMethod = CHTTPRequestMethodTypes::iPost;
 		
-		return $this->RequestService($sAPIPathURL, $sDefaultMethod, $sPost);
+		$bAuthenticate = true;
+		
+		return $this->RequestService($sAPIPathURL, $sDefaultMethod, $bAuthenticate, $sPost);
 	}
 }
 

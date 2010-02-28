@@ -83,7 +83,7 @@ class CHTTPRequester extends CGithubAPICallLimitator implements IHTTPRequest
 	
 	public function GetPostString()
 	{
-		return $this->_sPostString();
+		return $this->_sPostString;
 	}
 
 	public function Request()

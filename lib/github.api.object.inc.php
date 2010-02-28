@@ -78,9 +78,7 @@ tree:
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
-		$bAuthenticate = false;
-		
-		return $this->RequestService($sAPIPathURL, $sDefaultMethod, $bAuthenticate);
+		return $this->RequestService($sAPIPathURL, $sDefaultMethod);
 	}
 
 	
@@ -115,9 +113,7 @@ blob:
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
-		$bAuthenticate = false;
-		
-		return $this->RequestService($sAPIPathURL, $sDefaultMethod, $bAuthenticate);
+		return $this->RequestService($sAPIPathURL, $sDefaultMethod);
 	}
 
 
@@ -170,9 +166,7 @@ blobs:
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
-		$bAuthenticate = false;
-		
-		return $this->RequestService($sAPIPathURL, $sDefaultMethod, $bAuthenticate);
+		return $this->RequestService($sAPIPathURL, $sDefaultMethod);
 	}
 
 
@@ -195,9 +189,7 @@ A Blob
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
-		$bAuthenticate = false;
-		
-		return $this->RequestService($sAPIPathURL, $sDefaultMethod, $bAuthenticate);
+		return $this->RequestService($sAPIPathURL, $sDefaultMethod);
 	}
 }
 

@@ -24,6 +24,13 @@ function _printHTMLSubSectionHeader($sTitle)
 	echo "<h3 class='test-helper'>".$sTitle."</h3>";
 }
 
+//// HTML SUB SECTION HEADER - H4
+//
+function _printHTMLSubSubSectionHeader($sTitle)
+{
+	echo "<h4 class='test-helper'>".$sTitle."</h3>";
+}
+
 //// HTML PARAGRAPH - FILE PATH
 //
 function _printHTMLFileName($sFileName)
@@ -42,7 +49,7 @@ function _printHTMLP($sContent)
 //
 function _printHTMLC($sContent)
 {
-	echo "<pre class='test-helper'>".$sContent."</pre>";
+	echo "<pre class='test-helper'>".htmlentities($sContent)."</pre>";
 }
 
 //// TEST FILE HEADER
@@ -71,7 +78,8 @@ function _printTestClassMethodHeader($sTitle)
 //
 function _printTestClassMethodResult($sContent)
 {
-	_printHTMLC("Result:<br /><br />".$sContent);
+	_printHTMLSubSubSectionHeader("Result:");
+	_printHTMLC($sContent);
 }
 
 

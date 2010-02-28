@@ -32,7 +32,7 @@ h3.test-helper
 	border-top-width:3px;
 }
 
-p.test-helper, code.test-helper
+p.test-helper, code.test-helper, pre.test-helper
 {
 	border:2px dashed #666;
 	background-color:#EEE;
@@ -80,12 +80,12 @@ include("test/utils.inc.php");
 
 // GITHUB API FILE TESTS
 //
-#include("test/test.github.api.user.inc.php");
+include("test/test.github.api.user.inc.php");
 #include("test/test.github.api.issues.inc.php");
 #include("test/test.github.api.network.inc.php");
 #include("test/test.github.api.repository.inc.php");
 #include("test/test.github.api.commit.inc.php");
-include("test/test.github.api.object.inc.php");
+#include("test/test.github.api.object.inc.php");
 
 ?>
 

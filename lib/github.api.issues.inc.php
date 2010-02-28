@@ -5,7 +5,7 @@ require_once("github.api.services.inc.php");
 
 
 ////
-//// CLASS - GITHUB STATE ISSUES
+//// CLASS - GITHUB ISSUES - GITHUB ISSUES STATES
 ////
 //
 class CGithubIssueStates
@@ -29,7 +29,7 @@ class CGithubIssues extends CGithubAPIRequestServices
 
 	
 ////
-//// METHOD - SEARCH ISSUES
+//// METHOD - GITHUB ISSUES - SEARCH ISSUES
 ////
 //   Search Issues
 //   /issues/search/:user/:repo/:state/:search_term
@@ -65,7 +65,7 @@ class CGithubIssues extends CGithubAPIRequestServices
 
 
 ////
-//// METHOD - PROJECT ISSUES LIST
+//// METHOD - GITHUB ISSUES - PROJECT ISSUES LIST
 ////
 //   List a Projects Issues
 //   issues/list/:user/:repo/:state
@@ -104,7 +104,7 @@ issues:
 
 
 ////
-//// METHOD - VIEW ISSUE
+//// METHOD - GITHUB ISSUES - VIEW ISSUE
 ////
 //   View an Issue
 //   issues/show/:user/:repo/:number
@@ -135,7 +135,7 @@ issue:
 
 
 ////
-//// METHOD - LIST ISSUE COMMENTS
+//// METHOD - GITHUB ISSUES - LIST ISSUE COMMENTS
 ////
 //   List an Issue’s Comments
 //   issues/comments/:user/:repo/:number
@@ -168,7 +168,7 @@ comments:
 
 
 ////
-//// METHOD - OPEN ISSUE
+//// METHOD - GITHUB ISSUES - OPEN ISSUE
 ////
 //   Open's an Issue
 //   issues/open/:user/:repo
@@ -208,7 +208,7 @@ issue:
 
 
 ////
-//// METHOD - GITHUB ISSUES - CLOSE ISSUE
+//// METHOD - GITHUB ISSUES - GITHUB ISSUES - CLOSE ISSUE
 ////
 //   Close's an Issue
 //   issues/close/:user/:repo/:number
@@ -240,7 +240,7 @@ issue:
 
 
 ////
-//// METHOD - REOPEN ISSUE
+//// METHOD - GITHUB ISSUES - REOPEN ISSUE
 ////
 //   Reopen's an Issue
 //   issues/reopen/:user/:repo/:number
@@ -272,7 +272,7 @@ issue:
 
 
 ////
-//// METHOD - EDIT ISSUE
+//// METHOD - GITHUB ISSUES - EDIT ISSUE
 ////
 //   Edit Existing Issues
 //   issues/edit/:user/:repo/:number
@@ -301,7 +301,7 @@ body
 
 
 ////
-//// METHOD - LIST LABELS
+//// METHOD - GITHUB ISSUES - LIST LABELS
 ////
 //   Listing Labels
 //   issues/labels/:user/:repo
@@ -329,7 +329,7 @@ labels:
 
 
 ////
-//// METHOD - ADD LABEL
+//// METHOD - GITHUB ISSUES - ADD LABEL
 ////
 //   Add Labels
 //   issues/label/add/:user/:repo/:label/:number
@@ -357,7 +357,7 @@ labels:
 
 
 ////
-//// METHOD - REMOVE LABEL
+//// METHOD - GITHUB ISSUES - REMOVE LABEL
 ////
 //   Remove's Labels
 //   issues/label/remove/:user/:repo/:label/:number
@@ -385,7 +385,7 @@ labels:
 
 
 ////
-//// METHOD - COMMENT
+//// METHOD - GITHUB ISSUES - COMMENT
 ////
 //   Comment on Issues
 //   /issues/comment/:user/:repo/:id

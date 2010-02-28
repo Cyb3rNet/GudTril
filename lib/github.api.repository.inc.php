@@ -18,7 +18,7 @@ class CGithubRepositoryVisibility
 
 
 ////
-//// CLASS - GITHUB REPOSITORIES API SERVICES
+//// CLASS - GITHUB REPOSITORY API SERVICES
 ////
 //   Class implementing the GitHUb Repositories API Services
 //
@@ -30,7 +30,7 @@ class CGithubRepository extends CGithubAPIRequestServices
 	}
 
 ////
-//// METHOD - GITHUB REPOSITORIES - SEARCH REPOSITORIES
+//// METHOD - GITHUB REPOSITORY - SEARCH REPOSITORIES
 ////
 //   Searching Repositories
 //   GET
@@ -83,7 +83,7 @@ repositories:
 
 
 ////
-//// METHOD - GITHUB REPOSITORIES - SHOW REPOSITORY INFO
+//// METHOD - GITHUB REPOSITORY - SHOW REPOSITORY INFO
 ////
 //   Show Repo Info
 //   repos/show/:user/:repo
@@ -119,7 +119,7 @@ repository:
 
 
 ////
-//// METHOD - GITHUB REPOSITORIES - LIST ALL USER REPOSITORIES
+//// METHOD - GITHUB REPOSITORY - LIST ALL USER REPOSITORIES
 ////
 //   List All Repositories
 //   repos/show/:user
@@ -164,7 +164,7 @@ calls to the git binary.
 
 
 ////
-//// METHOD - GITHUB REPOSITORIES - WATCH REPOSITORY
+//// METHOD - GITHUB REPOSITORY - WATCH REPOSITORY
 ////
 //   Watch Repository
 //   repos/watch/:user/:repo
@@ -183,7 +183,7 @@ calls to the git binary.
 
 
 ////
-//// METHOD - GITHUB REPOSITORIES - UNWATCH REPOSITORY
+//// METHOD - GITHUB REPOSITORY - UNWATCH REPOSITORY
 ////
 //   UnWatch Repository
 //   repos/unwatch/:user/:repo
@@ -203,7 +203,7 @@ calls to the git binary.
 	
 
 ////
-//// METHOD - GITHUB REPOSITORIES - FORK A REPOSITORY
+//// METHOD - GITHUB REPOSITORY - FORK A REPOSITORY
 ////
 //   Forking Repositories
 //   repos/fork/:user/:repo
@@ -240,7 +240,7 @@ repository:
 
 
 ////
-//// METHOD - GITHUB REPOSITORIES - CREATE REPOSITORY
+//// METHOD - GITHUB REPOSITORY - CREATE REPOSITORY
 ////
 //   Creating a Repository
 //   repos/create
@@ -271,7 +271,7 @@ public			=> 1 for public, 0 for private
 
 
 ////
-//// METHOD - GITHUB REPOSITORIES - DELETE REPOSITORY
+//// METHOD - GITHUB REPOSITORY - DELETE REPOSITORY
 ////
 //   Deleting a Repository
 //   repos/delete/:repo
@@ -313,7 +313,7 @@ delete_token
 
 
 ////
-//// METHOD - GITHUB REPOSITORIES - SET REPOSITORY PRIVATE
+//// METHOD - GITHUB REPOSITORY - SET REPOSITORY PRIVATE
 ////
 //   Repository Visibility - Set Private
 //   repos/set/private/:repo
@@ -332,7 +332,7 @@ delete_token
 
 
 ////
-//// METHOD - GITHUB REPOSITORIES - SET REPOSITORY PUBLIC
+//// METHOD - GITHUB REPOSITORY - SET REPOSITORY PUBLIC
 ////
 //   Repository Visibility - Set Public
 //   repos/set/public/:repo
@@ -351,7 +351,7 @@ delete_token
 
 
 ////
-//// METHOD - GITHUB REPOSITORIES - GET REPOSITORY DEPLOY KEYS
+//// METHOD - GITHUB REPOSITORY - GET REPOSITORY DEPLOY KEYS
 ////
 //   Get Deploy Keys
 //   repos/keys/:repo
@@ -387,7 +387,7 @@ OxFKoCuyauVCnX12N7GUR29L//MWmbL+bDdEg/HHnmZWkwpaZhC/rsqqylZobpZsUcAKZ7f
 
 
 ////
-//// METHOD - GITHUB REPOSITORIES - ADD REPOSITORY DEPLOY KEY
+//// METHOD - GITHUB REPOSITORY - ADD REPOSITORY DEPLOY KEY
 ////
 //   Add Deploy Key
 //   repos/key/:repo/add
@@ -403,7 +403,7 @@ key		=> public key data
 */
 	public function AddRepoDeployKey($sRepo, $sTitle, $sKey)
 	{
-		$sPost = "title=".$sTitle."&key=".$sKey;
+		$sPost = "title=".$sTitle."&key=".urlencode($sKey);
 	
 		$sAPIPathURL = "/repos/key/".$sRepo."/add";
 		
@@ -416,7 +416,7 @@ key		=> public key data
 
 
 ////
-//// METHOD - GITHUB REPOSITORIES - REMOVE REPOSITORY DEPLOY KEY
+//// METHOD - GITHUB REPOSITORY - REMOVE REPOSITORY DEPLOY KEY
 ////
 //   Remove Deploy Key
 //   repos/key/:repo/remove
@@ -444,7 +444,7 @@ id 	=> id of the key
 
 
 ////
-//// METHOD - GITHUB REPOSITORIES - LIST COLLABORATORS
+//// METHOD - GITHUB REPOSITORY - LIST COLLABORATORS
 ////
 //   List Collaborators
 //   repos/show/:user/:repo/collaborators
@@ -470,7 +470,7 @@ id 	=> id of the key
 
 
 ////
-//// METHOD - GITHUB REPOSITORIES - ADD COLLABORATOR
+//// METHOD - GITHUB REPOSITORY - ADD COLLABORATOR
 ////
 //   Add Collaborator
 //   repos/collaborators/:repo/add/:user
@@ -490,7 +490,7 @@ id 	=> id of the key
 
 
 ////
-//// METHOD - GITHUB REPOSITORIES - REMOVE COLLABORATOR
+//// METHOD - GITHUB REPOSITORY - REMOVE COLLABORATOR
 ////
 //   Remove Collaborator
 //   repos/collaborators/:repo/remove/:user
@@ -510,7 +510,7 @@ id 	=> id of the key
 
 
 ////
-//// METHOD - GITHUB REPOSITORIES - LIST NETWORK
+//// METHOD - GITHUB REPOSITORY - LIST NETWORK
 ////
 //   Network
 //   repos/show/:user/:repo/network
@@ -556,7 +556,7 @@ network:
 
 
 ////
-//// METHOD - GITHUB REPOSITORIES - LANGUAGE BREAKDOWN
+//// METHOD - GITHUB REPOSITORY - LANGUAGE BREAKDOWN
 ////
 //   Language Breakdown
 //   /repos/show/:user/:repo/languages
@@ -582,7 +582,7 @@ languages:
 
 
 ////
-//// METHOD - GITHUB REPOSITORIES - SHOW TAGS
+//// METHOD - GITHUB REPOSITORY - SHOW TAGS
 ////
 //   Repository Refs
 //   repos/show/:user/:repo/tags
@@ -611,7 +611,7 @@ tags:
 
 
 ////
-//// METHOD - GITHUB REPOSITORIES - SHOW BRANCHES
+//// METHOD - GITHUB REPOSITORY - SHOW BRANCHES
 ////
 //   Repository Refs - Branches
 //   repos/show/:user/:repo/branches

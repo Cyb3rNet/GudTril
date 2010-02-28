@@ -20,7 +20,7 @@ class CGithubCommit extends CGithubAPIRequestServices
 	
 	
 ////
-//// METHOD - GITHUB COMMITS - LISTING ON A BRANCH
+//// METHOD - GITHUB COMMIT - LISTING ON A BRANCH
 ////
 //   Listing Commits on a Branch
 //   commits/list/:user_id/:repository/:branch
@@ -68,14 +68,12 @@ commits:
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
-		$bAuthenticate = false;
-		
-		return $this->RequestService($sAPIPathURL, $sDefaultMethod, $bAuthenticate);
+		return $this->RequestService($sAPIPathURL, $sDefaultMethod);
 	}
  
  
 ////
-//// METHOD - GITHUB COMMITS - LISTING ON A FILE
+//// METHOD - GITHUB COMMIT - LISTING ON A FILE
 ////
 //   Listing Commits for a File
 //   commits/list/:user_id/:repository/:branch/*path
@@ -123,15 +121,13 @@ commits:
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
-		$bAuthenticate = false;
-		
-		return $this->RequestService($sAPIPathURL, $sDefaultMethod, $bAuthenticate);
+		return $this->RequestService($sAPIPathURL, $sDefaultMethod);
 	}
  
  
  
 ////
-//// METHOD - GITHUB COMMITS - SHOW SPECIFIC
+//// METHOD - GITHUB COMMIT - SHOW SPECIFIC
 ////
 //   Showing a Specific Commit
 //   commits/show/:user_id/:repository/:sha
@@ -184,9 +180,7 @@ $ curl http://github.com/api/v2/json/commits/show/mojombo/grit/5071bf9fbfb81778c
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
-		$bAuthenticate = false;
-		
-		return $this->RequestService($sAPIPathURL, $sDefaultMethod, $bAuthenticate);
+		return $this->RequestService($sAPIPathURL, $sDefaultMethod);
 	}
 }
  

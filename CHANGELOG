@@ -1,3 +1,6 @@
+0.8
+	github.api.object.inc.php - Developped and Tested
+	This module works best in non encrypted HTTP
 0.7
 	github.api.commit.inc.php - Developed and Tested
 	This module works best in non ecrypted HTTP

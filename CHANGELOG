@@ -1,3 +1,5 @@
+0.5
+	github.api.issues.inc.php - Developed and Tested
 0.4
 	github.api.services.inc.php - Developed and Tested
 	Partially tested github.api.issues.inc.php

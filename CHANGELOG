@@ -1,3 +1,8 @@
+0.4
+	github.api.services.inc.php - Developed and Tested
+	Partially tested github.api.issues.inc.php
+	Many changes, renames and reajustments
+	Missing User API but other APIs developed
 0.3
 	gihub.connect.inc.php - Developed and tested
 	Renamed github.curl.wrapper.inc.php to http.requester.inc.php

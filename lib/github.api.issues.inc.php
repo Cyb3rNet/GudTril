@@ -23,7 +23,7 @@ class CGithubIssueStates
 class CGithubIssues extends CGithubAPIRequestServices
 {
 
-	public function __constructor(CGithubResponseTypes $sResponseType, $bAuthenticate = false)
+	public function __constructor($sResponseType, $bAuthenticate = false)
 	{
 		parent::__construct($sResponseType, $bAuthenticate);
 	}
@@ -55,11 +55,11 @@ class CGithubIssues extends CGithubAPIRequestServices
 }
 
 */
-	public function SearchIssues($sUser, $sRepo, CGithubStateIssues $sState, $sSearchTerm)
+	public function SearchIssues($sUser, $sRepo, $sState, $sSearchTerm)
 	{
 		$sAPIPathURL = "/issues/search/".$sUser."/".$sRepo."/".$sState."/".$sSearchTerm;
 		
-		$sDefaultMethod = CHTTPRequestMethodTypes::iGet;
+		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
 		return $this->RequestService($sAPIPathURL, $sDefaultMethod);
 	}
@@ -94,11 +94,11 @@ issues:
   state: open
 
 */
-	public function ListIssues($sUser, $sRepo, CGithubStateIssues $sState)
+	public function ListIssues($sUser, $sRepo, $sState)
 	{
 		$sAPIPathURL = "/issues/list/".$sUser."/".$sRepo."/".$sState;
 		
-		$sDefaultMethod = CHTTPRequestMethodTypes::iGet;
+		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
 		return $this->RequestService($sAPIPathURL, $sDefaultMethod);
 	}
@@ -127,9 +127,9 @@ issue:
 */
 	public function ViewIssue($sUser, $sRepo, $iNumber)
 	{
-		$this->_sAPIPathURL = "/issues/show/".$sUser."/".$sRepo."/".$iNumber;
+		$sAPIPathURL = "/issues/show/".$sUser."/".$sRepo."/".$iNumber;
 		
-		$sDefaultMethod = CHTTPRequestMethodTypes::iGet;
+		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
 		return $this->RequestService($sAPIPathURL, $sDefaultMethod);
 	}
@@ -162,7 +162,7 @@ comments:
 	{
 		$sAPIPathURL = "/issues/comments/".$sUser."/".$sRepo."/".$iNumber;
 		
-		$sDefaultMethod = CHTTPRequestMethodTypes::iGet;
+		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
 		return $this->RequestService($sAPIPathURL, $sDefaultMethod);
 	}
@@ -200,7 +200,7 @@ issue:
 		
 		$sAPIPathURL = "/issues/open/".$sUser."/".$sRepo;
 		
-		$sDefaultMethod = CHTTPRequestMethodTypes::iPost;
+		$sDefaultMethod = CHTTPRequestMethods::iPost;
 		
 		$bAuthenticate = true;
 		
@@ -232,7 +232,7 @@ issue:
 	{
 		$sAPIPathURL = "/issues/close/".$sUser."/".$sRepo."/".$iNumber;
 		
-		$sDefaultMethod = CHTTPRequestMethodTypes::iGet;
+		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
 		$bAuthenticate = true;
 		
@@ -264,7 +264,7 @@ issue:
 	{
 		$sAPIPathURL = "/issues/reopen/".$sUser."/".$sRepo."/".$iNumber;
 		
-		$sDefaultMethod = CHTTPRequestMethodTypes::iGet;
+		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
 		$bAuthenticate = true;
 		
@@ -293,7 +293,7 @@ body
 		
 		$sAPIPathURL = "/issues/edit/".$sUser."/".$sRepo."/".$iNumber;
 		
-		$sDefaultMethod = CHTTPRequestMethodTypes::iPost;
+		$sDefaultMethod = CHTTPRequestMethods::iPost;
 		
 		$bAuthenticate = true;
 		
@@ -321,7 +321,7 @@ labels:
 	{
 		$sAPIPathURL = "/issues/labels/".$sUser."/".$sRepo;
 		
-		$sDefaultMethod = CHTTPRequestMethodTypes::iGet;
+		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
 		$bAuthenticate = true;
 		
@@ -349,7 +349,7 @@ labels:
 	{
 		$sAPIPathURL = "/issues/label/add/".$sUser."/".$sRepo."/".$sLabel."/".$iNumber;
 		
-		$sDefaultMethod = CHTTPRequestMethodTypes::iGet;
+		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
 		$bAuthenticate = true;
 		
@@ -377,7 +377,7 @@ labels:
 	{
 		$sAPIPathURL = "/issues/label/remove/".$sUser."/".$sRepo."/".$sLabel."/".$iNumber;
 		
-		$sDefaultMethod = CHTTPRequestMethodTypes::iGet;
+		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
 		$bAuthenticate = true;
 		
@@ -403,7 +403,7 @@ comment
 		
 		$sAPIPathURL = "/issues/comment/".$sUser."/".$sRepo."/".$iNumber;
 		
-		$sDefaultMethod = CHTTPRequestMethodTypes::iPost;
+		$sDefaultMethod = CHTTPRequestMethods::iPost;
 		
 		$bAuthenticate = true;
 		

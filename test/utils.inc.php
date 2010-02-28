@@ -42,7 +42,7 @@ function _printHTMLP($sContent)
 //
 function _printHTMLC($sContent)
 {
-	echo "<code class='test-helper'>".$sContent."</code>";
+	echo "<pre class='test-helper'>".$sContent."</pre>";
 }
 
 //// TEST FILE HEADER
@@ -141,6 +141,8 @@ class CTestClassHelper extends CTestClass
 	{
 		foreach ($this->_aoMethodHelpers as $oMethodHelper)
 		{
+			sleep(1);
+		
 			switch ($oMethodHelper->GetType())
 			{
 				case CTestMethodHelper::iNoReturn:

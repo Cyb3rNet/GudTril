@@ -1,7 +1,7 @@
 <?php
 
 
-include("github.api.services.inc.php");
+require_once("github.api.services.inc.php");
 
 
 ////
@@ -22,7 +22,6 @@ class CGithubIssueStates
 //
 class CGithubIssues extends CGithubAPIRequestServices
 {
-
 	public function __constructor($sResponseType, $bAuthenticate = false)
 	{
 		parent::__construct($sResponseType, $bAuthenticate);

@@ -1,9 +1,9 @@
 <?php
  
  
-include("github.connect.inc.php");
+require_once("github.connect.inc.php");
  
-include("gihub.interface.api.service.inc.php");
+require_once("gihub.interface.api.service.inc.php");
 
 
 ////

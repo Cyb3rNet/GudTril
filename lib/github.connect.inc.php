@@ -1,6 +1,6 @@
 <?php
 
-include("http.requester.inc.php");
+require_once("http.requester.inc.php");
 
 
 //// INTERFACE - GITHUB RESPONSE

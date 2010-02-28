@@ -1,7 +1,7 @@
 <?php
 
 
-include("github.connect.inc.php");
+require_once("github.connect.inc.php");
 
 
 //// INTERFACE - GITHUB API CONNECTION SERVICES

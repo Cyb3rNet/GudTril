@@ -81,9 +81,9 @@ include("test/utils.inc.php");
 // GITHUB API FILE TESTS
 //
 #include("test/test.github.api.user.inc.php");
-include("test/test.github.api.issues.inc.php");
+#include("test/test.github.api.issues.inc.php");
 #include("test/test.github.api.network.inc.php");
-#include("test/test.github.api.repository.inc.php");
+include("test/test.github.api.repository.inc.php");
 #include("test/test.github.api.commit.inc.php");
 #include("test/test.github.api.object.inc.php");
 

@@ -1,8 +1,8 @@
 <?php
 
 
-include("curl.inc.php");
-include("github.api.call.limitator.inc.php");
+require_once("curl.inc.php");
+require_once("github.api.call.limitator.inc.php");
 
 
 //// INTERFACE - HTTPRequest

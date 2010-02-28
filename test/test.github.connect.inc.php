@@ -27,7 +27,7 @@ $oTCH->RegisterMethodNoReturn("SetAPIRequest", array($sAPIRequest));
 
 $oTCH->RegisterMethodWithReturn("GetURL", array());
 
-$oTCH->RegisterMethodWithReturn("Connect", array());
+$oTCH->RegisterMethodWithReturn("Request", array());
 
 $oTCH->RunTestMap();
 
@@ -54,7 +54,7 @@ $oTCH->RegisterMethodNoReturn("SetPostString", array($sPostString));
 
 $oTCH->RegisterMethodWithReturn("GetURL", array());
 
-$oTCH->RegisterMethodWithReturn("Connect", array());
+$oTCH->RegisterMethodWithReturn("Request", array());
 
 $oTCH->RunTestMap();
 

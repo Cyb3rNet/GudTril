@@ -1,8 +1,7 @@
 <?php
 
-include("github.connect.inc.php");
 
-include("gihub.api.service.inc.php");
+include("github.api.services.inc.php");
 
 
 ////
@@ -26,7 +25,7 @@ class CGithubIssues extends CGithubAPIRequestServices
 
 	public function __constructor(CGithubResponseTypes $sResponseType, $bAuthenticate = false)
 	{
-		parent::__construct(CGithubResponseTypes $sResponseType, $bAuthenticate);
+		parent::__construct($sResponseType, $bAuthenticate);
 	}
 
 	

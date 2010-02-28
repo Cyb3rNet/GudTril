@@ -214,14 +214,14 @@ class CTestClass
 		}
 		else
 		{
-			$vReturn = call_user_func(array($this->_oC, $sMethodName));
+			$vReturn1 = call_user_func(array($this->_oC, $sMethodName));
 		}
 		
-		$vReturn = ob_get_contents();
+		$vReturn2 = ob_get_contents();
 		
 		ob_end_clean();
 		
-		return $vReturn;
+		return $vReturn1.$vReturn2;
 	}
 }
 

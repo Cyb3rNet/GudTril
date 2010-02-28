@@ -17,7 +17,7 @@ $sURL = "http://gudtril.cyb3r.ca/test/utils/test.get.html";
 
 $oTCH = new CTestClassHelper("CHTTPRequester", array($sURL, CHTTPRequestMethods::iGet));
 
-$oTCH->RegisterMethodWithReturn("Connect", array());
+$oTCH->RegisterMethodWithReturn("Request", array());
 
 $oTCH->RunTestMap();
 
@@ -30,7 +30,7 @@ $sPostString = "name=Cyb3r&project=GudTril&test=1";
 
 $oTCH = new CTestClassHelper("CHTTPRequester", array($sURL, CHTTPRequestMethods::iPost, $sPostString));
 
-$oTCH->RegisterMethodWithReturn("Connect", array());
+$oTCH->RegisterMethodWithReturn("Request", array());
 
 $oTCH->RunTestMap();
 

@@ -47,7 +47,7 @@ class CHTTPRequester extends CGithubAPICallLimitator implements IHTTPRequest
 
 	private $_oConnection;
 
-	public function __construct($sURL, CHTTPRequestMethods $iMethod, $sPostString = "")
+	public function __construct($sURL, $iMethod, $sPostString = "")
 	{
 		parent::__construct();
 	

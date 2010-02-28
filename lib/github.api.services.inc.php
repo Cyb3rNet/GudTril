@@ -1,6 +1,9 @@
 <?php
 
 
+include("github.connect.inc.php");
+
+
 //// INTERFACE - GITHUB API CONNECTION SERVICES
 //
 interface IGithubAPIConnection
@@ -33,7 +36,7 @@ class CGithubAPIRequester extends CGithubConnect implements IGithubAPIConnection
 	private $_bAuthenticate;
 	private $_iRequestMethod;
 
-	public function __construct($sAPIPathURL, CHTTPRequestMethodTypes $iDefaultRequestMethod, CGithubResponseTypes $sResponseType, $bAuthenticate)
+	public function __construct($sAPIPathURL, CHTTPRequestMethods $iDefaultRequestMethod, CGithubResponseTypes $sResponseType, $bAuthenticate)
 	{
 		$this->_sAPIPathURL = $sAPIPathURL;
 		
@@ -45,7 +48,7 @@ class CGithubAPIRequester extends CGithubConnect implements IGithubAPIConnection
 		
 		if ($this->_bAuthenticate)
 		{
-			$this->_iRequestMethod = CHTTPRequestMethodTypes::iPost;
+			$this->_iRequestMethod = CHTTPRequestMethods::iPost;
 		}
 	}
 	
@@ -110,7 +113,7 @@ class CGithubAPIRequestServices implements IGithubAPIRequestServices
 		
 		$sResponse = $this->_oGHS->RequestService();
 		
-		unset($this-_oGHS);
+		unset($this->_oGHS);
 		
 		return $sResponse;
 	}

@@ -47,7 +47,7 @@ class CGithubAPICallLimitator
 			self::$_iCounter >= $iCallLimit
 		)
 		{
-			throws new LimitException("Exceeded limit requests (".$iCallLimit." per minute)");
+			throw new LimitException("Exceeded limit requests (".$iCallLimit." per minute)");
 		}
 		else if ($iNow - self::$_iStartTime > self::iSecondsPerMinute)
 		{

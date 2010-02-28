@@ -13,7 +13,7 @@ define('GITHUB_TOKEN', '');
 //// HTTPS LOGIN
 ////
 //
-define('FORCE_HTTPS', 1);
+define('FORCE_HTTPS', 0);
 
 
 ////

@@ -68,7 +68,9 @@ commits:
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
-		return $this->RequestService($sAPIPathURL, $sDefaultMethod);
+		$bAuthenticate = false;
+		
+		return $this->RequestService($sAPIPathURL, $sDefaultMethod, $bAuthenticate);
 	}
  
  
@@ -121,7 +123,9 @@ commits:
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
-		return $this->RequestService($sAPIPathURL, $sDefaultMethod);
+		$bAuthenticate = false;
+		
+		return $this->RequestService($sAPIPathURL, $sDefaultMethod, $bAuthenticate);
 	}
  
  
@@ -180,7 +184,9 @@ $ curl http://github.com/api/v2/json/commits/show/mojombo/grit/5071bf9fbfb81778c
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
-		return $this->RequestService($sAPIPathURL, $sDefaultMethod);
+		$bAuthenticate = false;
+		
+		return $this->RequestService($sAPIPathURL, $sDefaultMethod, $bAuthenticate);
 	}
 }
  

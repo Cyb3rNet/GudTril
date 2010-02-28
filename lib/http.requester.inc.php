@@ -1,7 +1,7 @@
 <?php
 
 
-require_once("curl.inc.php");
+require_once("http.base.inc.php");
 require_once("github.api.call.limitator.inc.php");
 
 
@@ -94,11 +94,11 @@ class CHTTPRequester extends CGithubAPICallLimitator implements IHTTPRequest
 		switch ($this->_iMethod)
 		{
 			case CHTTPRequestMethods::iGet:
-				$this->_oConnection = new CCurlBaseGet($this->_sURL);
+				$this->_oConnection = new CHTTPBaseGet($this->_sURL);
 			break;
 			
 			case CHTTPRequestMethods::iPost:
-				$this->_oConnection = new CCurlBasePost($this->_sURL);
+				$this->_oConnection = new CHTTPBasePost($this->_sURL);
 			break;
 		}
 
@@ -107,7 +107,15 @@ class CHTTPRequester extends CGithubAPICallLimitator implements IHTTPRequest
 		if ($this->_iMethod == CHTTPRequestMethods::iPost)
 			$this->_oConnection->SetPostString($this->_sPostString);
 		
-		return $this->_oConnection->Execute();
+		try {
+			$sResponse = $this->_oConnection->Execute();
+		}
+		catch (CHTTPException $e)
+		{
+			$sResponse = $e->getMessage();
+		}
+		
+		return $sResponse;
 	}
 }
 

@@ -134,7 +134,7 @@ $ curl -F 'login=schacon' -F 'token=XXX' https://github.com/api/v2/json/user/sho
 			$sPost .= "&values[company]=".urlencode($sCompany);
 		if (strlen($sLocation))
 			$sPost .= "&values[location]=".urlencode($sLocation);
-	
+		
 		$sAPIPathURL = "/user/show/".$sUser;
 		
 		$sDefaultMethod = CHTTPRequestMethods::iPost;

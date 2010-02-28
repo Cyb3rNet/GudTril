@@ -60,11 +60,14 @@ $oTCH = new CTestClassHelper("CGithubUser", array($sResponseType, $bAuthenticate
 //$oTCH->RegisterMethodWithReturn("GetUserInfo", array($sUser));
 
 $sUser = "Cyb3rWeb";
-$sName = "Serafim Junior Dos Santos - Test";
+//$sName = "Serafim Junior Dos Santos - Test";
+$sName = "";
 $sEmail = "";
 $sBlog = "http://www.cyb3r.ca/test";
-$sCompany = "Serafim Junior Dos Santos Fagundes Cyb3r Web - Test";
-$sLocation = "Montréal, Québec, Canada";
+//$sCompany = "Serafim Junior Dos Santos Fagundes Cyb3r Web - Test";
+$sCompany = "";
+//$sLocation = "Montréal, Québec, Canada";
+$sLocation = "";
 $oTCH->RegisterMethodWithReturn("SetUserInfo", array($sUser, $sName, $sEmail, $sBlog, $sCompany, $sLocation));
 
 
@@ -76,15 +79,11 @@ $oTCH->RegisterMethodWithReturn("IsAuthenticated", array());
 //$sUser = "Cyb3rWeb";
 //$oTCH->RegisterMethodWithReturn("ShowWhoUserFollowing", array($sUser));
 
-// TO RUN AFTER
-//
-$sUser = "Cyb3rWeb";
-$oTCH->RegisterMethodWithReturn("ShowWhoUserFollowers", array($sUser));
+//$sUser = "Cyb3rWeb";
+//$oTCH->RegisterMethodWithReturn("ShowWhoUserFollowers", array($sUser));
 
-// TO RUN AFTER
-//
-$sUser = "toutix";
-$oTCH->RegisterMethodWithReturn("UnFollowUser", array($sUser));
+//$sUser = "toutix";
+//$oTCH->RegisterMethodWithReturn("UnFollowUser", array($sUser));
 
 
 //$oTCH->RegisterMethodWithReturn("ShowWatchedRepos", array($sUser));

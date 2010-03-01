@@ -74,7 +74,7 @@ repositories:
 */
 	public function SearchRepos($sSearchTerm)
 	{
-		$sAPIPathURL = "/repos/search/".$sSearchTerm;
+		$sAPIPathURL = "/repos/search/".urlencode($sSearchTerm);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
@@ -110,7 +110,7 @@ repository:
 */
 	public function ShowRepoInfo($sUser, $sRepo)
 	{
-		$sAPIPathURL = "/repos/show/".$sUser."/".$sRepo;
+		$sAPIPathURL = "/repos/show/".urlencode($sUser)."/".urlencode($sRepo);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
@@ -155,7 +155,7 @@ calls to the git binary.
 */
 	public function ShowUserRepos($sUser)
 	{
-		$sAPIPathURL = "/repos/show/".$sUser;
+		$sAPIPathURL = "/repos/show/".urlencode($sUser);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
@@ -172,7 +172,7 @@ calls to the git binary.
 //   Authenticated
 	public function WatchRepo($sUser, $sRepo)
 	{
-		$sAPIPathURL = "/repos/watch/".$sUser."/".$sRepo;
+		$sAPIPathURL = "/repos/watch/".urlencode($sUser)."/".urlencode($sRepo);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iPost;
 		
@@ -192,7 +192,7 @@ calls to the git binary.
 	
 	public function UnWatchRepo($sUser, $sRepo)
 	{
-		$sAPIPathURL = "/repos/unwatch/".$sUser."/".$sRepo;
+		$sAPIPathURL = "/repos/unwatch/".urlencode($sUser)."/".urlencode($sRepo);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iPost;
 		
@@ -229,7 +229,7 @@ repository:
 */
 	public function ForkRepo($sUser, $sRepo)
 	{
-		$sAPIPathURL = "/repos/fork/".$sUser."/".$sRepo;
+		$sAPIPathURL = "/repos/fork/".urlencode($sUser)."/".urlencode($sRepo);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iPost;
 		
@@ -258,7 +258,7 @@ public			=> 1 for public, 0 for private
 */
 	public function CreateRepo($sRepoName, $sDescription, $sHomepage, $iVisibility)
 	{
-		$sPost = "name=".$sRepoName."&description=".$sDescription."&homepage=".$sHomepage."&public=".$cVisibility;
+		$sPost = "name=".urlencode($sRepoName)."&description=".urlencode($sDescription)."&homepage=".urlencode($sHomepage)."&public=".urlencode($cVisibility);
 	
 		$sAPIPathURL = "/repos/create";
 		
@@ -288,7 +288,7 @@ delete_token
 //
 	public function DeleteRepo($sRepo)
 	{
-		$sAPIPathURL = "/repos/delete/".$sRepo;
+		$sAPIPathURL = "/repos/delete/".urlencode($sRepo);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iPost;
 		
@@ -300,9 +300,9 @@ delete_token
 	
 	public function ConfirmDeleteRepo($sRepo, $sDeleteToken)
 	{
-		$sPost = "delete_token=".$sDeleteToken;
+		$sPost = "delete_token=".urlencode($sDeleteToken);
 	
-		$sAPIPathURL = "/repos/delete/".$sRepo;
+		$sAPIPathURL = "/repos/delete/".urlencode($sRepo);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iPost;
 		
@@ -321,7 +321,7 @@ delete_token
 //   Authenticated
 	public function SetRepoPrivate($sRepo)
 	{
-		$sAPIPathURL = "/repos/set/private/".$sRepo;
+		$sAPIPathURL = "/repos/set/private/".urlencode($sRepo);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iPost;
 		
@@ -340,7 +340,7 @@ delete_token
 //   Authenticated
 	public function SetRepoPublic($sRepo)
 	{
-		$sAPIPathURL = "/repos/set/public/".$sRepo;
+		$sAPIPathURL = "/repos/set/public/".urlencode($sRepo);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iPost;
 		
@@ -376,7 +376,7 @@ OxFKoCuyauVCnX12N7GUR29L//MWmbL+bDdEg/HHnmZWkwpaZhC/rsqqylZobpZsUcAKZ7f
 */
 	public function GetRepoDeployKeys($sRepo)
 	{
-		$sAPIPathURL = "/repos/keys/".$sRepo;
+		$sAPIPathURL = "/repos/keys/".urlencode($sRepo);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iPost;
 		
@@ -403,9 +403,9 @@ key		=> public key data
 */
 	public function AddRepoDeployKey($sRepo, $sTitle, $sKey)
 	{
-		$sPost = "title=".$sTitle."&key=".urlencode($sKey);
+		$sPost = "title=".urlencode($sTitle)."&key=".urlencode($sKey);
 	
-		$sAPIPathURL = "/repos/key/".$sRepo."/add";
+		$sAPIPathURL = "/repos/key/".urlencode($sRepo)."/add";
 		
 		$sDefaultMethod = CHTTPRequestMethods::iPost;
 		
@@ -431,9 +431,9 @@ id 	=> id of the key
 */
 	public function RemoveRepoDeployKey($sRepo, $sKeyId)
 	{
-		$sPost = "id=".$sKeyId;
+		$sPost = "id=".urlencode($sKeyId);
 	
-		$sAPIPathURL = "/repos/key/".$sRepo."/remove";
+		$sAPIPathURL = "/repos/key/".urlencode($sRepo)."/remove";
 		
 		$sDefaultMethod = CHTTPRequestMethods::iPost;
 		
@@ -459,7 +459,7 @@ id 	=> id of the key
 */
 	public function ListRepoCollaborators($sUser, $sRepo)
 	{
-		$sAPIPathURL = "/repos/show/".$sUser."/".$sRepo."/collaborators";
+		$sAPIPathURL = "/repos/show/".urlencode($sUser)."/".urlencode($sRepo)."/collaborators";
 		
 		$sDefaultMethod = CHTTPRequestMethods::iPost;
 		
@@ -479,7 +479,7 @@ id 	=> id of the key
 //
 	public function AddRepoCollaborator($sRepo, $sCollaborator)
 	{
-		$sAPIPathURL = "/repos/collaborators/".$sRepo."/add/".$sCollaborator;
+		$sAPIPathURL = "/repos/collaborators/".urlencode($sRepo)."/add/".urlencode($sCollaborator);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iPost;
 		
@@ -499,7 +499,7 @@ id 	=> id of the key
 //
 	public function RemoveRepoCollaborator($sRepo, $sCollaborator)
 	{
-		$sAPIPathURL = "/repos/collaborators/".$sRepo."/remove/".$sCollaborator;
+		$sAPIPathURL = "/repos/collaborators/".urlencode($sRepo)."/remove/".urlencode($sCollaborator);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iPost;
 		
@@ -547,7 +547,7 @@ network:
 */
 	public function ListRepoNetwork($sUser, $sRepo)
 	{
-		$sAPIPathURL = "/repos/show/".$sUser."/".$sRepo."/network";
+		$sAPIPathURL = "/repos/show/".urlencode($sUser)."/".urlencode($sRepo)."/network";
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
@@ -573,7 +573,7 @@ languages:
 */
 	public function ShowRepoLanguages($sUser, $sRepo)
 	{
-		$sAPIPathURL = "/repos/show/".$sUser."/".$sRepo."/languages/";
+		$sAPIPathURL = "/repos/show/".urlencode($sUser)."/".urlencode($sRepo)."/languages/";
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
@@ -602,7 +602,7 @@ tags:
 */
 	public function ShowRepoTags($sUser, $sRepo)
 	{
-		$sAPIPathURL = "/repos/show/".$sUser."/".$sRepo."/tags";
+		$sAPIPathURL = "/repos/show/".urlencode($sUser)."/".urlencode($sRepo)."/tags";
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
@@ -631,7 +631,7 @@ branches:
 */
 	public function ShowRepoBranches($sUser, $sRepo)
 	{
-		$sAPIPathURL = "/repos/show/".$sUser."/".$sRepo."/branches";
+		$sAPIPathURL = "/repos/show/".urlencode($sUser)."/".urlencode($sRepo)."/branches";
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		

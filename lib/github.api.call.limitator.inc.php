@@ -21,9 +21,10 @@ class LimitException extends Exception
 //
 class CGithubAPICallLimitator
 {
-	private static $_iCounter = 0;
-	private static $_iStartTime = 0;
-	private static $_iElapsedTime = 0;
+	// rendered public for testing
+	public static $_iCounter = 0;
+	public static $_iStartTime = 0;
+	public static $_iElapsedTime = 0;
 
 	const iSecondsPerMinute = 60;
 	

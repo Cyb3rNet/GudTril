@@ -20,7 +20,7 @@ define('FORCE_HTTPS', 0);
 //// GITHUB BASE URL - DOMAIN/SERVICE/VERSION
 ////
 //
-define('GITHUB_BASEURL', 'https://github.com/api/v2/');
+define('GITHUB_BASEURL', 'http://github.com/api/v2/');
 
 
 ////

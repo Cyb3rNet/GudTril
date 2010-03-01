@@ -77,7 +77,7 @@ total_private_repo_count: 1
 */
 	public function GetUserInfo($sUser)
 	{
-		$sAPIPathURL = "/user/show/".$sUser;
+		$sAPIPathURL = "/user/show/".urlencode($sUser);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
@@ -135,7 +135,7 @@ $ curl -F 'login=schacon' -F 'token=XXX' https://github.com/api/v2/json/user/sho
 		if (strlen($sLocation))
 			$sPost .= "&values[location]=".urlencode($sLocation);
 		
-		$sAPIPathURL = "/user/show/".$sUser;
+		$sAPIPathURL = "/user/show/".urlencode($sUser);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iPost;
 		
@@ -154,7 +154,7 @@ $ curl -F 'login=schacon' -F 'token=XXX' https://github.com/api/v2/json/user/sho
 //
 	public function ShowWhoUserFollowing($sUser)
 	{
-		$sAPIPathURL = "/user/show/".$sUser."/followers";
+		$sAPIPathURL = "/user/show/".urlencode($sUser)."/followers";
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
@@ -171,7 +171,7 @@ $ curl -F 'login=schacon' -F 'token=XXX' https://github.com/api/v2/json/user/sho
 //
 	public function ShowWhoUserFollowers($sUser)
 	{
-		$sAPIPathURL = "/user/show/".$sUser."/followers";
+		$sAPIPathURL = "/user/show/".urlencode($sUser)."/followers";
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
@@ -189,7 +189,7 @@ $ curl -F 'login=schacon' -F 'token=XXX' https://github.com/api/v2/json/user/sho
 //
 	public function FollowUser($sUser)
 	{
-		$sAPIPathURL = "/user/follow/".$sUser;
+		$sAPIPathURL = "/user/follow/".urlencode($sUser);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iPost;
 		
@@ -209,7 +209,7 @@ $ curl -F 'login=schacon' -F 'token=XXX' https://github.com/api/v2/json/user/sho
 //
 	public function UnFollowUser($sUser)
 	{
-		$sAPIPathURL = "/user/unfollow/".$sUser;
+		$sAPIPathURL = "/user/unfollow/".urlencode($sUser);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iPost;
 		
@@ -254,7 +254,7 @@ repositories:
 */
 	public function ShowWatchedRepos($sUser)
 	{
-		$sAPIPathURL = "/repos/watched/".$sUser;
+		$sAPIPathURL = "/repos/watched/".urlencode($sUser);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
@@ -322,7 +322,7 @@ repositories:
 */
 	public function RemovePublicKey($sKeyId)
 	{
-		$sPost = "id=".$sKeyId;
+		$sPost = "id=".urlencode($sKeyId);
 	
 		$sAPIPathURL = "/user/key/remove";
 		
@@ -362,7 +362,7 @@ repositories:
 //
 	public function AddEmail($sEmail)
 	{
-		$sPost = "email=".$sEmail;
+		$sPost = "email=".urlencode($sEmail);
 	
 		$sAPIPathURL = "/user/email/add";
 		
@@ -384,7 +384,7 @@ repositories:
 //
 	public function RemoveEmail($sEmail)
 	{
-		$sPost = "email=".$sEmail;
+		$sPost = "email=".urlencode($sEmail);
 	
 		$sAPIPathURL = "/user/email/remove";
 		

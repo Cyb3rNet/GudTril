@@ -64,7 +64,7 @@ commits:
 */
 	public function ListOnBranch($sUser, $sRepoName, $sBranch)
 	{
-		$sAPIPathURL = "/commits/list/".$sUser."/".$sRepoName."/".$sBranch;
+		$sAPIPathURL = "/commits/list/".urlencode($sUser)."/".urlencode($sRepoName)."/".urlencode($sBranch);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
@@ -117,7 +117,7 @@ commits:
 */
 	public function ListOnFile($sUser, $sRepoName, $sBranch, $sFilePath)
 	{
-		$sAPIPathURL = "/commits/list/".$sUser."/".$sRepoName."/".$sBranch."/".$sFilePath;
+		$sAPIPathURL = "/commits/list/".urlencode($sUser)."/".urlencode($sRepoName)."/".urlencode($sBranch)."/".urlencode($sFilePath);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
@@ -176,7 +176,7 @@ $ curl http://github.com/api/v2/json/commits/show/mojombo/grit/5071bf9fbfb81778c
 */
 	public function ShowSpecific($sUser, $sRepoName, $sSHA)
 	{
-		$sAPIPathURL = "/commits/show/".$sUser."/".$sRepoName."/".$sSHA;
+		$sAPIPathURL = "/commits/show/".urlencode($sUser)."/".urlencode($sRepoName)."/".urlencode($sSHA);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		

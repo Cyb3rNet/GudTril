@@ -74,7 +74,7 @@ tree:
 */
 	public function ShowTree($sUser, $sRepoName, $sTreeSHA)
 	{
-		$sAPIPathURL = "/tree/show/".$sUser."/".$sRepoName."/".$sTreeSHA;
+		$sAPIPathURL = "/tree/show/".urlencode($sUser)."/".urlencode($sRepoName)."/".urlencode($sTreeSHA);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
@@ -109,7 +109,7 @@ blob:
 */
 	public function BlobByTreeSHA($sUser, $sRepoName, $sTreeSHA, $sPath)
 	{
-		$sAPIPathURL = "/blob/show/".$sUser."/".$sRepoName."/".$sTreeSHA."/".$sPath;
+		$sAPIPathURL = "/blob/show/".urlencode($sUser)."/".urlencode($sRepoName)."/".urlencode($sTreeSHA)."/".urlencode($sPath);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
@@ -162,7 +162,7 @@ blobs:
 */
 	public function ListBlobs($sUser, $sRepoName, $sTreeSHA)
 	{
-		$sAPIPathURL = "/blob/all/".$sUser."/".$sRepoName."/".$sTreeSHA;
+		$sAPIPathURL = "/blob/all/".urlencode($sUser)."/".urlencode($sRepoName)."/".urlencode($sTreeSHA);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
@@ -185,7 +185,7 @@ A Blob
 */
 	public function ShowBlob($sUser, $sRepoName, $sSHA)
 	{
-		$sAPIPathURL = "/blob/show/".$sUser."/".$sRepoName."/".$sSHA;
+		$sAPIPathURL = "/blob/show/".urlencode($sUser)."/".urlencode($sRepoName)."/".urlencode($sSHA);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		

@@ -21,33 +21,35 @@ $sRepo = "GudTril";
 _printHTMLSubSectionHeader("GET Test");
 
 
-//$oTCH = new CTestClassHelper("CGithubRepository", array($sResponseType, $bAuthenticate));
+$oTCH = new CTestClassHelper("CGithubRepository", array($sResponseType, $bAuthenticate));
 
-//$sSearchTerm = "API";
-//$oTCH->RegisterMethodWithReturn("SearchRepos", array($sSearchTerm));
+$sSearchTerm = "github API";
+$oTCH->RegisterMethodWithReturn("SearchRepos", array($sSearchTerm));
 
 //$sUser, $sRepo
-//$oTCH->RegisterMethodWithReturn("ShowRepoInfo", array($sUser, $sRepo));
+$oTCH->RegisterMethodWithReturn("ShowRepoInfo", array($sUser, $sRepo));
 
 //$sUser
-//$oTCH->RegisterMethodWithReturn("ShowUserRepos", array($sUser));
+$oTCH->RegisterMethodWithReturn("ShowUserRepos", array($sUser));
 
 //$sUser, $sRepo
-//$oTCH->RegisterMethodWithReturn("ListRepoNetwork", array($sUser, $sRepo));
+$oTCH->RegisterMethodWithReturn("ListRepoNetwork", array($sUser, $sRepo));
 
 //$sUser, $sRepo
-//$oTCH->RegisterMethodWithReturn("ShowRepoLanguages", array($sUser, $sRepo));
+$oTCH->RegisterMethodWithReturn("ShowRepoLanguages", array($sUser, $sRepo));
 
 //$sUser, $sRepo
-//$oTCH->RegisterMethodWithReturn("ShowRepoTags", array($sUser, $sRepo));
+$oTCH->RegisterMethodWithReturn("ShowRepoTags", array($sUser, $sRepo));
 
 //$sUser, $sRepo
-//$oTCH->RegisterMethodWithReturn("ShowRepoBranches", array($sUser, $sRepo));
+$oTCH->RegisterMethodWithReturn("ShowRepoBranches", array($sUser, $sRepo));
 
 
-//$oTCH->RunTestMap();
+$oTCH->RunTestMap();
 
 
+echo "Number of API requests: ".CGithubAPICallLimitator::$_iCounter."<br />";
+echo "Elapsed time since first request: ".CGithubAPICallLimitator::$_iElapsedTime."<br />";
 
 
 // TEST CGithubRepository - POST
@@ -56,14 +58,14 @@ _printHTMLSubSectionHeader("POST Test");
 
 $oTCH = new CTestClassHelper("CGithubRepository", array($sResponseType, $bAuthenticate));
 
-//$sSearchTerm = "jQuery";
-//$oTCH->RegisterMethodWithReturn("SearchRepos", array($sSearchTerm));
+$sSearchTerm = "jQuery";
+$oTCH->RegisterMethodWithReturn("SearchRepos", array($sSearchTerm));
 
 //$sUser, $sRepo
-//$oTCH->RegisterMethodWithReturn("ShowRepoInfo", array($sUser, $sRepo));
+$oTCH->RegisterMethodWithReturn("ShowRepoInfo", array($sUser, $sRepo));
 
 //$sUser
-//$oTCH->RegisterMethodWithReturn("ShowUserRepos", array($sUser));
+$oTCH->RegisterMethodWithReturn("ShowUserRepos", array($sUser));
 
 //$sUser = "toutix";
 //$sRepo = "WebFW";
@@ -82,8 +84,6 @@ $oTCH = new CTestClassHelper("CGithubRepository", array($sResponseType, $bAuthen
 //$iVisibility = CGithubRepositoryVisibility::iPublic;
 //$oTCH->RegisterMethodWithReturn("CreateRepo", array($sRepoName, $sDescription, $sHomepage, $iVisibility));
 
-// TRY DELETE AFTER
-
 //$sRepo = "git-close";
 //$oTCH->RegisterMethodWithReturn("DeleteRepo", array($sRepo));
 //$oTCH->RegisterMethodWithReturn("GetURL", array());
@@ -97,13 +97,13 @@ $oTCH = new CTestClassHelper("CGithubRepository", array($sResponseType, $bAuthen
 //$sRepo = "PHPWebLib";
 //$oTCH->RegisterMethodWithReturn("SetRepoPublic", array($sRepo));
 
-$sRepo = "GudTril";
-$sTitle = "test key";
-$sKey = "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA/Lvj9u03CPiLfJnB0JiNsSRs+ZWUcxn7T07lh1Z+Iej39FQfN1lnmqtgrxIX8gvsHizGL0Zv6E4KV2sC5YPxu+jwQQPSW181Asp0plfk9Md8dvXfSbdCQTUzXlZTZeZz/DEr9csUTHJMqWND3Pp0RLxE5V8ue+gq0fUz1OEDIAzA8B3yIxf43nn4xKuEqA0U33/m8OVMkbAcWV5MzyQYcdH0u1Er+tFPVPcP54mVOAP2APkltQiUYeLEaZ3LtW/iVHoyXo0YeSjaW1AWXgHA1mzMfx62zkRbwFNjylP6vCCTIdve9VQ8by9jRLJOqIQI2kwk4rxzLCi/PxP/M2huPQ== toutix@junior-upzwacdv";
-$oTCH->RegisterMethodWithReturn("AddRepoDeployKey", array($sRepo, $sTitle, $sKey));
-
 //$sRepo = "GudTril";
-//$oTCH->RegisterMethodWithReturn("GetRepoDeployKeys", array($sRepo));
+//$sTitle = "test key";
+//$sKey = "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA/Lvj9u03CPiLfJnB0JiNsSRs+ZWUcxn7T07lh1Z+Iej39FQfN1lnmqtgrxIX8gvsHizGL0Zv6E4KV2sC5YPxu+jwQQPSW181Asp0plfk9Md8dvXfSbdCQTUzXlZTZeZz/DEr9csUTHJMqWND3Pp0RLxE5V8ue+gq0fUz1OEDIAzA8B3yIxf43nn4xKuEqA0U33/m8OVMkbAcWV5MzyQYcdH0u1Er+tFPVPcP54mVOAP2APkltQiUYeLEaZ3LtW/iVHoyXo0YeSjaW1AWXgHA1mzMfx62zkRbwFNjylP6vCCTIdve9VQ8by9jRLJOqIQI2kwk4rxzLCi/PxP/M2huPQ== toutix@junior-upzwacdv";
+//$oTCH->RegisterMethodWithReturn("AddRepoDeployKey", array($sRepo, $sTitle, $sKey));
+
+$sRepo = "GudTril";
+$oTCH->RegisterMethodWithReturn("GetRepoDeployKeys", array($sRepo));
 
 // DELETE ADDED KEY AFTER
 //$sRepo = "GudTril";
@@ -111,8 +111,8 @@ $oTCH->RegisterMethodWithReturn("AddRepoDeployKey", array($sRepo, $sTitle, $sKey
 //$oTCH->RegisterMethodWithReturn("RemoveRepoDeployKey", array($sRepo, $sKeyId));
 
 //$sUser = "asantos";
-//$sRepo = "master";
-//$oTCH->RegisterMethodWithReturn("ListRepoCollaborators", array($sUser, $sRepo));
+$sRepo = "master";
+$oTCH->RegisterMethodWithReturn("ListRepoCollaborators", array($sUser, $sRepo));
 
 //$sRepo = "GudTril";
 //$sCollaborator = "toutix";
@@ -122,21 +122,25 @@ $oTCH->RegisterMethodWithReturn("AddRepoDeployKey", array($sRepo, $sTitle, $sKey
 //$sCollaborator = "toutix";
 //$oTCH->RegisterMethodWithReturn("RemoveRepoCollaborator", array($sRepo, $sCollaborator));
 
-//$sUser = "Cyb3rWeb";
-//$sRepo = "GudTril";
-//$oTCH->RegisterMethodWithReturn("ListRepoNetwork", array($sUser, $sRepo));
+$sUser = "Cyb3rWeb";
+$sRepo = "GudTril";
+$oTCH->RegisterMethodWithReturn("ListRepoNetwork", array($sUser, $sRepo));
 
 //$sUser, $sRepo
-//$oTCH->RegisterMethodWithReturn("ShowRepoLanguages", array($sUser, $sRepo));
+$oTCH->RegisterMethodWithReturn("ShowRepoLanguages", array($sUser, $sRepo));
 
 //$sUser, $sRepo
-//$oTCH->RegisterMethodWithReturn("ShowRepoTags", array($sUser, $sRepo));
+$oTCH->RegisterMethodWithReturn("ShowRepoTags", array($sUser, $sRepo));
 
 //$sUser, $sRepo
-//$oTCH->RegisterMethodWithReturn("ShowRepoBranches", array($sUser, $sRepo));
+$oTCH->RegisterMethodWithReturn("ShowRepoBranches", array($sUser, $sRepo));
 
 
 $oTCH->RunTestMap();
+
+
+echo "Number of API requests: ".CGithubAPICallLimitator::$_iCounter."<br />";
+echo "Elapsed time since first request: ".CGithubAPICallLimitator::$_iElapsedTime."<br />";
 
 
 ?>

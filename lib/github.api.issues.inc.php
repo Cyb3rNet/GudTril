@@ -56,7 +56,7 @@ class CGithubIssues extends CGithubAPIRequestServices
 */
 	public function SearchIssues($sUser, $sRepo, $sState, $sSearchTerm)
 	{
-		$sAPIPathURL = "/issues/search/".$sUser."/".$sRepo."/".$sState."/".$sSearchTerm;
+		$sAPIPathURL = "/issues/search/".urlencode($sUser)."/".urlencode($sRepo)."/".urlencode($sState)."/".urlencode($sSearchTerm);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
@@ -95,7 +95,7 @@ issues:
 */
 	public function ListIssues($sUser, $sRepo, $sState)
 	{
-		$sAPIPathURL = "/issues/list/".$sUser."/".$sRepo."/".$sState;
+		$sAPIPathURL = "/issues/list/".urlencode($sUser)."/".urlencode($sRepo)."/".urlencode($sState);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
@@ -126,7 +126,7 @@ issue:
 */
 	public function ViewIssue($sUser, $sRepo, $iNumber)
 	{
-		$sAPIPathURL = "/issues/show/".$sUser."/".$sRepo."/".$iNumber;
+		$sAPIPathURL = "/issues/show/".urlencode($sUser)."/".urlencode($sRepo)."/".urlencode($iNumber);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
@@ -159,7 +159,7 @@ comments:
 */
 	public function ListCommentsByIssue($sUser, $sRepo, $iNumber)
 	{
-		$sAPIPathURL = "/issues/comments/".$sUser."/".$sRepo."/".$iNumber;
+		$sAPIPathURL = "/issues/comments/".urlencode($sUser)."/".urlencode($sRepo)."/".urlencode($iNumber);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
@@ -195,9 +195,9 @@ issue:
 */
 	public function OpenIssue($sUser, $sRepo, $sTitle, $sBody)
 	{
-		$sPost = "title=".$sTitle."&body=".$sBody;
+		$sPost = "title=".urlencode($sTitle)."&body=".urlencode($sBody);
 		
-		$sAPIPathURL = "/issues/open/".$sUser."/".$sRepo;
+		$sAPIPathURL = "/issues/open/".urlencode($sUser)."/".urlencode($sRepo);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iPost;
 		
@@ -229,7 +229,7 @@ issue:
 */
 	public function CloseIssue($sUser, $sRepo, $iNumber)
 	{
-		$sAPIPathURL = "/issues/close/".$sUser."/".$sRepo."/".$iNumber;
+		$sAPIPathURL = "/issues/close/".urlencode($sUser)."/".urlencode($sRepo)."/".urlencode($iNumber);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
@@ -261,7 +261,7 @@ issue:
 */
 	public function ReOpenIssue($sUser, $sRepo, $iNumber)
 	{
-		$sAPIPathURL = "/issues/reopen/".$sUser."/".$sRepo."/".$iNumber;
+		$sAPIPathURL = "/issues/reopen/".urlencode($sUser)."/".urlencode($sRepo)."/".urlencode($iNumber);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
@@ -288,9 +288,9 @@ body
 */
 	public function EditIssue($sUser, $sRepo, $iNumber, $sTitle, $sBody)
 	{
-		$sPost = "title=".$sTitle."&body=".$sBody;
+		$sPost = "title=".urlencode($sTitle)."&body=".urlencode($sBody);
 		
-		$sAPIPathURL = "/issues/edit/".$sUser."/".$sRepo."/".$iNumber;
+		$sAPIPathURL = "/issues/edit/".urlencode($sUser)."/".urlencode($sRepo)."/".urlencode($iNumber);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iPost;
 		
@@ -318,7 +318,7 @@ labels:
 */
 	public function ListLabels($sUser, $sRepo)
 	{
-		$sAPIPathURL = "/issues/labels/".$sUser."/".$sRepo;
+		$sAPIPathURL = "/issues/labels/".urlencode($sUser)."/".urlencode($sRepo);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
@@ -346,7 +346,7 @@ labels:
 */
 	public function AddLabel($sUser, $sRepo, $sLabel, $iNumber)
 	{
-		$sAPIPathURL = "/issues/label/add/".$sUser."/".$sRepo."/".$sLabel."/".$iNumber;
+		$sAPIPathURL = "/issues/label/add/".urlencode($sUser)."/".urlencode($sRepo)."/".urlencode($sLabel)."/".urlencode($iNumber);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
@@ -374,7 +374,7 @@ labels:
 */
 	public function RemoveLabel($sUser, $sRepo, $sLabel, $iNumber)
 	{
-		$sAPIPathURL = "/issues/label/remove/".$sUser."/".$sRepo."/".$sLabel."/".$iNumber;
+		$sAPIPathURL = "/issues/label/remove/".urlencode($sUser)."/".urlencode($sRepo)."/".urlencode($sLabel)."/".urlencode($iNumber);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iGet;
 		
@@ -398,9 +398,9 @@ comment
 */
 	public function CommentOnIssue($sUser, $sRepo, $iNumber, $sComment)
 	{
-		$sPost = "comment=".$sComment;
+		$sPost = "comment=".urlencode($sComment);
 		
-		$sAPIPathURL = "/issues/comment/".$sUser."/".$sRepo."/".$iNumber;
+		$sAPIPathURL = "/issues/comment/".urlencode($sUser)."/".urlencode($sRepo)."/".urlencode($iNumber);
 		
 		$sDefaultMethod = CHTTPRequestMethods::iPost;
 		

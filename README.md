@@ -1,8 +1,8 @@
->> GudTril by Serafim Junior Dos Santos Cyb3r Web
+>> GudTril by Serafim Junior Dos Santos Cyb3r Net
 >>
 >> PHP 5 Github API Library
 >>
->> Version 0.7
+>> Version 0.8
 >>
 >> MIT Licence
 >>

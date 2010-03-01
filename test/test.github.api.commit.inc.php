@@ -41,6 +41,10 @@ $oTCH->RegisterMethodWithReturn("ShowSpecific", array($sUser, $sRepoName, $sSHA)
 $oTCH->RunTestMap();
 
 
+echo "Number of API requests: ".CGithubAPICallLimitator::$_iCounter."<br />";
+echo "Elapsed time since first request: ".CGithubAPICallLimitator::$_iElapsedTime."<br />";
+
+
 // TEST CGithubCommit - POST
 _printHTMLSubSectionHeader("POST Test");
 
@@ -59,5 +63,10 @@ $oTCH->RegisterMethodWithReturn("ShowSpecific", array($sUser, $sRepoName, $sSHA)
 
 
 $oTCH->RunTestMap();
+
+
+echo "Number of API requests: ".CGithubAPICallLimitator::$_iCounter."<br />";
+echo "Elapsed time since first request: ".CGithubAPICallLimitator::$_iElapsedTime."<br />";
+
 
 ?>

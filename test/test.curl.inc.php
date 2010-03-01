@@ -4,8 +4,8 @@
 //
 //include("lib/curl.inc.php");
 
-$sTitle = "Test curl base classes";
-$sFileName = "lib/curl.inc.php";
+$sTitle = "Test http base classes";
+$sFileName = "lib/http.base.inc.php";
 
 _printTestFileHeader($sTitle, $sFileName);
 
@@ -13,7 +13,7 @@ _printTestFileHeader($sTitle, $sFileName);
 
 $sURL = "http://gudtril.cyb3r.ca/test/utils/test.get.html";
 
-$oTCH = new CTestClassHelper("CCurlBaseGet", array($sURL));
+$oTCH = new CTestClassHelper("CHTTPBaseGet", array($sURL));
 
 $oTCH->RegisterMethodNoReturn("PrepareOptions", array());
 
@@ -26,7 +26,7 @@ $oTCH->RunTestMap();
 $sURL = "http://gudtril.cyb3r.ca/test/utils/test.post.php";
 $sPost = "name=Cyb3r&project=GudTril&test=1";
 
-$oTCH = new CTestClassHelper("CCurlBasePost", array($sURL));
+$oTCH = new CTestClassHelper("CHTTPBasePost", array($sURL));
 
 $oTCH->RegisterMethodNoReturn("PrepareOptions", array());
 

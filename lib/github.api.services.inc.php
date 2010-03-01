@@ -133,7 +133,7 @@ class CGithubAPIRequestServices implements IGithubAPIRequestServices
 
 	Public function RequestService($sAPIPathURL, $sDefaultMethod, $DefaultAutheticated = false, $sPostString = "")
 	{
-		$this->_bAuthenticate |= $this->_bForceAuthenticate || $DefaultAutheticated;
+		$this->_bAuthenticate = $this->_bForceAuthenticate || $DefaultAutheticated;
 	
 		$this->_oGHS = new CGithubAPIRequester($sAPIPathURL, $sDefaultMethod, $this->_sResponseType, $this->_bAuthenticate);
 		

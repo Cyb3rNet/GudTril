@@ -12,7 +12,7 @@ _printTestFileHeader($sTitle, $sFileName);
 
 
 $sResponseType = CGithubResponseTypes::sXML;
-$bAuthenticate = false;
+$bAuthenticate = true;
 
 
 $sUser = "Cyb3rWeb";
@@ -45,6 +45,10 @@ $oTCH->RegisterMethodWithReturn("ShowBlob", array($sUser, $sRepoName, $sSHA));
 $oTCH->RunTestMap();
 
 
+echo "Number of API requests: ".CGithubAPICallLimitator::$_iCounter."<br />";
+echo "Elapsed time since first request: ".CGithubAPICallLimitator::$_iElapsedTime."<br />";
+
+
 // TEST CGithubObject - POST
 _printHTMLSubSectionHeader("POST Test");
 
@@ -64,7 +68,12 @@ $oTCH->RegisterMethodWithReturn("ListBlobs", array($sUser, $sRepoName, $sTreeSHA
 $sSHA = "2734e62d8efb7abe79fc6e4be05740b747f6d327";
 $oTCH->RegisterMethodWithReturn("ShowBlob", array($sUser, $sRepoName, $sSHA));
 
+
 $oTCH->RunTestMap();
+
+
+echo "Number of API requests: ".CGithubAPICallLimitator::$_iCounter."<br />";
+echo "Elapsed time since first request: ".CGithubAPICallLimitator::$_iElapsedTime."<br />";
 
 
 ?>

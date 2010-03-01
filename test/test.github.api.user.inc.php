@@ -47,6 +47,10 @@ _printHTMLSubSectionHeader("GET Test");
 //$oTCH->RunTestMap();
 
 
+echo "Number of API requests: ".CGithubAPICallLimitator::$_iCounter."<br />";
+echo "Elapsed time since first request: ".CGithubAPICallLimitator::$_iElapsedTime."<br />";
+
+
 // TEST CGithubUsers - POST
 _printHTMLSubSectionHeader("POST Test");
 
@@ -91,9 +95,9 @@ $oTCH->RegisterMethodWithReturn("IsAuthenticated", array());
 
 //$oTCH->RegisterMethodWithReturn("GetPublicKeys", array());
 
-//$sKeyName = "Test key";
-//$sKey = "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA/Lvj9u03CPiLfJnB0JiNsSRs+ZWUcxn7T07lh1Z+Iej39FQfN1lnmqtgrxIX8gvsHizGL0Zv6E4KV2sC5YPxu+jwQQPSW181Asp0plfk9Md8dvXfSbdCQTUzXlZTZeZz/DEr9csUTHJMqWND3Pp0RLxE5V8ue+gq0fUz1OEDIAzA8B3yIxf43nn4xKuEqA0U33/m8OVMkbAcWV5MzyQYcdH0u1Er+tFPVPcP54mVOAP2APkltQiUYeLEaZ3LtW/iVHoyXo0YeSjaW1AWXgHA1mzMfx62zkRbwFNjylP6vCCTIdve9VQ8by9jRLJOqIQI2kwk4rxzLCi/PxP/M2huPQ== toutix@junior-upzwacdv";
-//$oTCH->RegisterMethodWithReturn("AddPublicKey", array($sKeyName, $sKey));
+$sKeyName = "Test key";
+$sKey = "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA/Lvj9u03CPiLfJnB0JiNsSRs+ZWUcxn7T07lh1Z+Iej39FQfN1lnmqtgrxIX8gvsHizGL0Zv6E4KV2sC5YPxu+jwQQPSW181Asp0plfk9Md8dvXfSbdCQTUzXlZTZeZz/DEr9csUTHJMqWND3Pp0RLxE5V8ue+gq0fUz1OEDIAzA8B3yIxf43nn4xKuEqA0U33/m8OVMkbAcWV5MzyQYcdH0u1Er+tFPVPcP54mVOAP2APkltQiUYeLEaZ3LtW/iVHoyXo0YeSjaW1AWXgHA1mzMfx62zkRbwFNjylP6vCCTIdve9VQ8by9jRLJOqIQI2kwk4rxzLCi/PxP/M2huPQ== toutix@junior-upzwacdv";
+$oTCH->RegisterMethodWithReturn("AddPublicKey", array($sKeyName, $sKey));
 
 
 //$oTCH->RegisterMethodWithReturn("GetPostString", array());
@@ -116,5 +120,9 @@ $oTCH->RegisterMethodWithReturn("IsAuthenticated", array());
 
 
 $oTCH->RunTestMap();
+
+
+echo "Number of API requests: ".CGithubAPICallLimitator::$_iCounter."<br />";
+echo "Elapsed time since first request: ".CGithubAPICallLimitator::$_iElapsedTime."<br />";
 
 ?>

@@ -5,7 +5,7 @@
 //// GITHUB LOGIN AND TOKEN CONSTANTS
 ////
 //
-define('GITHUB_LOGIN', 'Cyb3rWeb');
+define('GITHUB_LOGIN', '');
 define('GITHUB_TOKEN', '');
 
 

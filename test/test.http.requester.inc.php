@@ -9,11 +9,12 @@ $sFileName = "lib/http.requester.inc.php";
 
 _printTestFileHeader($sTitle, $sFileName);
 
+//
+//
 // TEST CHTTPRequest - GET
-
 _printHTMLSectionHeader("GET Test");
 
-$sURL = "http://gudtril.cyb3r.ca/test/utils/test.get.html";
+$sURL = "";
 
 $oTCH = new CTestClassHelper("CHTTPRequester", array($sURL, CHTTPRequestMethods::iGet));
 
@@ -21,12 +22,15 @@ $oTCH->RegisterMethodWithReturn("Request", array());
 
 $oTCH->RunTestMap();
 
+
+//
+//
 // TEST CHTTPRequest - POST
 
 _printHTMLSectionHeader("POST Test");
 
-$sURL = "http://gudtril.cyb3r.ca/test/utils/test.post.php";
-$sPostString = "name=Cyb3r&project=GudTril&test=1";
+$sURL = "";
+$sPostString = "";
 
 $oTCH = new CTestClassHelper("CHTTPRequester", array($sURL, CHTTPRequestMethods::iPost, $sPostString));
 

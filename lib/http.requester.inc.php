@@ -107,13 +107,7 @@ class CHTTPRequester extends CGithubAPICallLimitator implements IHTTPRequest
 		if ($this->_iMethod == CHTTPRequestMethods::iPost)
 			$this->_oConnection->SetPostString($this->_sPostString);
 		
-		try {
-			$sResponse = $this->_oConnection->Execute();
-		}
-		catch (CHTTPException $e)
-		{
-			$sResponse = $e->getMessage();
-		}
+		$sResponse = $this->_oConnection->Execute();
 		
 		return $sResponse;
 	}

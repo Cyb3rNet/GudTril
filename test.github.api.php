@@ -70,7 +70,7 @@ include("test/utils.inc.php");
 
 // INDIVIDUAL IMPLEMENTATION FILE TESTS
 //
-//include("test/test.curl.inc.php");
+//include("test/test.http.base.inc.php");
 //include("test/test.http.requester.inc.php");
 //include("test/test.github.connect.inc.php");
 //include("test/test.github.api.services.inc.php");
@@ -80,12 +80,12 @@ include("test/utils.inc.php");
 
 // GITHUB API FILE TESTS
 //
-include("test/test.github.api.user.inc.php");
-include("test/test.github.api.issues.inc.php");
+//include("test/test.github.api.user.inc.php");
+//include("test/test.github.api.issues.inc.php");
 #include("test/test.github.api.network.inc.php");
 include("test/test.github.api.repository.inc.php");
-include("test/test.github.api.commit.inc.php");
-include("test/test.github.api.object.inc.php");
+//include("test/test.github.api.commit.inc.php");
+//include("test/test.github.api.object.inc.php");
 
 ?>
 

@@ -216,22 +216,23 @@ class CTestClass
 	
 	private function _callMethodWithReturn($sMethodName, $avArgs)
 	{
-		ob_start();
-			
-		if (count($avArgs))
+		try
 		{
-			call_user_func_array(array($this->_oC, $sMethodName), $avArgs);
+			if (count($avArgs))
+			{
+				$sReturn = call_user_func_array(array($this->_oC, $sMethodName), $avArgs);
+			}
+			else
+			{
+				$sReturn = call_user_func(array($this->_oC, $sMethodName));
+			}
 		}
-		else
+		catch (CHTTPException $e)
 		{
-			$vReturn1 = call_user_func(array($this->_oC, $sMethodName));
+			$sReturn = $e->getMessage();
 		}
 		
-		$vReturn2 = ob_get_contents();
-		
-		ob_end_clean();
-		
-		return $vReturn1.$vReturn2;
+		return $sReturn;
 	}
 }
 

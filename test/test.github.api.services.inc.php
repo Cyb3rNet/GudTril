@@ -11,7 +11,7 @@ _printTestFileHeader($sTitle, $sFileName);
 
 // TEST CGithubAPIRequester - GET
 
-$sUser = "Cyb3rWeb";
+$sUser = "Cyb3rNet";
 $sRepo = "GudTril";
 $sState = CGithubIssueStates::sOpen;
 
@@ -62,7 +62,7 @@ _printTestFileHeader($sTitle, $sFileName);
 
 // TEST CGithubAPIRequestServices - GET
 
-$sUser = "Cyb3rWeb";
+$sUser = "Cyb3rNet";
 $sRepo = "GudTril";
 $bForceAuthenticate = true;
 

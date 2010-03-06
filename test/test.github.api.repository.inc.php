@@ -13,127 +13,138 @@ _printTestFileHeader($sTitle, $sFileName);
 $sResponseType = CGithubResponseTypes::sXML;
 $bAuthenticate = true;
 
-$sUser = "Cyb3rWeb";
+$sUser = "Cyb3rNet";
 $sRepo = "GudTril";
 
 
-// TEST CGithubRepository - GET
+// START CGithubRepository GET TESTS
+//
 _printHTMLSubSectionHeader("GET Test");
 
+//$oTCH = new CTestClassHelper("CGithubRepository", array($sResponseType, $bAuthenticate));
 
-$oTCH = new CTestClassHelper("CGithubRepository", array($sResponseType, $bAuthenticate));
+//$sSearchTerm = "";
+//$oTCH->RegisterMethodWithReturn("SearchRepos", array($sSearchTerm));
 
-$sSearchTerm = "github API";
-$oTCH->RegisterMethodWithReturn("SearchRepos", array($sSearchTerm));
-
-//$sUser, $sRepo
-$oTCH->RegisterMethodWithReturn("ShowRepoInfo", array($sUser, $sRepo));
+//$sUser = "";
+//$sRepo = "";
+//$oTCH->RegisterMethodWithReturn("ShowRepoInfo", array($sUser, $sRepo));
 
 //$sUser
-$oTCH->RegisterMethodWithReturn("ShowUserRepos", array($sUser));
+//$oTCH->RegisterMethodWithReturn("ShowUserRepos", array($sUser));
 
-//$sUser, $sRepo
-$oTCH->RegisterMethodWithReturn("ListRepoNetwork", array($sUser, $sRepo));
+//$sUser = "";
+//$sRepo = "";
+//$oTCH->RegisterMethodWithReturn("ListRepoNetwork", array($sUser, $sRepo));
 
-//$sUser, $sRepo
-$oTCH->RegisterMethodWithReturn("ShowRepoLanguages", array($sUser, $sRepo));
+//$sUser = "";
+//$sRepo = "";
+//$oTCH->RegisterMethodWithReturn("ShowRepoLanguages", array($sUser, $sRepo));
 
-//$sUser, $sRepo
-$oTCH->RegisterMethodWithReturn("ShowRepoTags", array($sUser, $sRepo));
+//$sUser = "";
+//$sRepo = "";
+//$oTCH->RegisterMethodWithReturn("ShowRepoTags", array($sUser, $sRepo));
 
-//$sUser, $sRepo
-$oTCH->RegisterMethodWithReturn("ShowRepoBranches", array($sUser, $sRepo));
-
-
-$oTCH->RunTestMap();
-
-
-echo "Number of API requests: ".CGithubAPICallLimitator::$_iCounter."<br />";
-echo "Elapsed time since first request: ".CGithubAPICallLimitator::$_iElapsedTime."<br />";
+//$sUser = "";
+//$sRepo = "";
+//$oTCH->RegisterMethodWithReturn("ShowRepoBranches", array($sUser, $sRepo));
 
 
-// TEST CGithubRepository - POST
+//$oTCH->RunTestMap();
+
+
+//echo "Number of API requests: ".CGithubAPICallLimitator::$_iCounter."<br />";
+//echo "Elapsed time since first request: ".CGithubAPICallLimitator::$_iElapsedTime."<br />";
+//
+// END CGithubRepository GET TESTS
+
+
+// START CGithubRepository POST TESTS
+//
 _printHTMLSubSectionHeader("POST Test");
 
 
 $oTCH = new CTestClassHelper("CGithubRepository", array($sResponseType, $bAuthenticate));
 
-$sSearchTerm = "jQuery";
-$oTCH->RegisterMethodWithReturn("SearchRepos", array($sSearchTerm));
+//$sSearchTerm = "";
+//$oTCH->RegisterMethodWithReturn("SearchRepos", array($sSearchTerm));
 
-//$sUser, $sRepo
-$oTCH->RegisterMethodWithReturn("ShowRepoInfo", array($sUser, $sRepo));
+//$sUser = "";
+//$sRepo = "";
+//$oTCH->RegisterMethodWithReturn("ShowRepoInfo", array($sUser, $sRepo));
 
-//$sUser
-$oTCH->RegisterMethodWithReturn("ShowUserRepos", array($sUser));
+//$sUser = "";
+//$oTCH->RegisterMethodWithReturn("ShowUserRepos", array($sUser));
 
-//$sUser = "toutix";
-//$sRepo = "WebFW";
+//$sUser = "";
+//$sRepo = "";
 //$oTCH->RegisterMethodWithReturn("WatchRepo", array($sUser, $sRepo));
 
-//$sUser, $sRepo
+//$sUser = "";
+//$sRepo = "";
 //$oTCH->RegisterMethodWithReturn("UnWatchRepo", array($sUser, $sRepo));
 
-//$sUser = "toutix";
-//$sRepo = "git-close";
+//$sUser = "";
+//$sRepo = "";
 //$oTCH->RegisterMethodWithReturn("ForkRepo", array($sUser, $sRepo));
 
-//$sRepoName = "Test-REPO-API";
+//$sRepoName = "TestREPOAPI";
 //$sDescription = "Repo generated with API";
 //$sHomepage = "";
 //$iVisibility = CGithubRepositoryVisibility::iPublic;
 //$oTCH->RegisterMethodWithReturn("CreateRepo", array($sRepoName, $sDescription, $sHomepage, $iVisibility));
 
-//$sRepo = "git-close";
-//$oTCH->RegisterMethodWithReturn("DeleteRepo", array($sRepo));
-//$oTCH->RegisterMethodWithReturn("GetURL", array());
+$sRepo = "TestREPOAPI";
+$oTCH->RegisterMethodWithReturn("DeleteRepo", array($sRepo));
+$oTCH->RegisterMethodWithReturn("GetURL", array());
+$oTCH->RegisterMethodWithReturn("GetPostString", array());
 
-//$sRepo, $sDeleteToken
+//$sRepo = "";
+//$sDeleteToken = "";
 //$oTCH->RegisterMethodWithReturn("ConfirmDeleteRepo", array($sRepo, $sDeleteToken));
 
-//$sRepo = "Pydj";
+//$sRepo = "";
 //$oTCH->RegisterMethodWithReturn("SetRepoPrivate", array($sRepo));
 
-//$sRepo = "PHPWebLib";
+//$sRepo = "";
 //$oTCH->RegisterMethodWithReturn("SetRepoPublic", array($sRepo));
 
-//$sRepo = "GudTril";
-//$sTitle = "test key";
-//$sKey = "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA/Lvj9u03CPiLfJnB0JiNsSRs+ZWUcxn7T07lh1Z+Iej39FQfN1lnmqtgrxIX8gvsHizGL0Zv6E4KV2sC5YPxu+jwQQPSW181Asp0plfk9Md8dvXfSbdCQTUzXlZTZeZz/DEr9csUTHJMqWND3Pp0RLxE5V8ue+gq0fUz1OEDIAzA8B3yIxf43nn4xKuEqA0U33/m8OVMkbAcWV5MzyQYcdH0u1Er+tFPVPcP54mVOAP2APkltQiUYeLEaZ3LtW/iVHoyXo0YeSjaW1AWXgHA1mzMfx62zkRbwFNjylP6vCCTIdve9VQ8by9jRLJOqIQI2kwk4rxzLCi/PxP/M2huPQ== toutix@junior-upzwacdv";
+//$sRepo = "";
+//$sTitle = "";
+//$sKey = "";
 //$oTCH->RegisterMethodWithReturn("AddRepoDeployKey", array($sRepo, $sTitle, $sKey));
 
-$sRepo = "GudTril";
-$oTCH->RegisterMethodWithReturn("GetRepoDeployKeys", array($sRepo));
+//$sRepo = "";
+//$oTCH->RegisterMethodWithReturn("GetRepoDeployKeys", array($sRepo));
 
-// DELETE ADDED KEY AFTER
-//$sRepo = "GudTril";
-//$sKeyId = "266124";
+//$sRepo = "";
+//$sKeyId = "";
 //$oTCH->RegisterMethodWithReturn("RemoveRepoDeployKey", array($sRepo, $sKeyId));
 
-//$sUser = "asantos";
-$sRepo = "master";
-$oTCH->RegisterMethodWithReturn("ListRepoCollaborators", array($sUser, $sRepo));
+//$sUser = "";
+//$sRepo = "";
+//$oTCH->RegisterMethodWithReturn("ListRepoCollaborators", array($sUser, $sRepo));
 
-//$sRepo = "GudTril";
-//$sCollaborator = "toutix";
+//$sRepo = "";
+//$sCollaborator = "";
 //$oTCH->RegisterMethodWithReturn("AddRepoCollaborator", array($sRepo, $sCollaborator));
 
-//$sRepo = "Pydj";
-//$sCollaborator = "toutix";
+//$sRepo = "";
+//$sCollaborator = "";
 //$oTCH->RegisterMethodWithReturn("RemoveRepoCollaborator", array($sRepo, $sCollaborator));
 
-$sUser = "Cyb3rWeb";
-$sRepo = "GudTril";
-$oTCH->RegisterMethodWithReturn("ListRepoNetwork", array($sUser, $sRepo));
+//$sUser = "";
+//$sRepo = "";
+//$oTCH->RegisterMethodWithReturn("ListRepoNetwork", array($sUser, $sRepo));
 
 //$sUser, $sRepo
-$oTCH->RegisterMethodWithReturn("ShowRepoLanguages", array($sUser, $sRepo));
+//$oTCH->RegisterMethodWithReturn("ShowRepoLanguages", array($sUser, $sRepo));
 
 //$sUser, $sRepo
-$oTCH->RegisterMethodWithReturn("ShowRepoTags", array($sUser, $sRepo));
+//$oTCH->RegisterMethodWithReturn("ShowRepoTags", array($sUser, $sRepo));
 
 //$sUser, $sRepo
-$oTCH->RegisterMethodWithReturn("ShowRepoBranches", array($sUser, $sRepo));
+//$oTCH->RegisterMethodWithReturn("ShowRepoBranches", array($sUser, $sRepo));
 
 
 $oTCH->RunTestMap();
@@ -141,6 +152,7 @@ $oTCH->RunTestMap();
 
 echo "Number of API requests: ".CGithubAPICallLimitator::$_iCounter."<br />";
 echo "Elapsed time since first request: ".CGithubAPICallLimitator::$_iElapsedTime."<br />";
-
+//
+// END CGithubRepository POST TESTS
 
 ?>

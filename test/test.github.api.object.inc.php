@@ -15,7 +15,7 @@ $sResponseType = CGithubResponseTypes::sXML;
 $bAuthenticate = true;
 
 
-$sUser = "Cyb3rWeb";
+$sUser = "Cyb3rNet";
 $sRepoName = "GudTril";
 
 

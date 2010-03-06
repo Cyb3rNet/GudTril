@@ -17,7 +17,7 @@ _printHTMLSubSectionHeader("GET Test");
 $sResponseType = CGithubResponseTypes::sXML;
 $bAuthenticate = true;
 
-$sUser = "Cyb3rWeb";
+$sUser = "Cyb3rNet";
 $sRepo = "GudTril";
 
 
@@ -80,8 +80,8 @@ $oTCH->RegisterMethodWithReturn("ListIssues", array($sUser, $sRepo, $sState));
 //$iNumber = 5;
 //$oTCH->RegisterMethodWithReturn("ListCommentsByIssue", array($sUser, $sRepo, $iNumber));
 
-$sTitle = "Test open issue 100 Title";
-$sBody = "Test open issue 100";
+$sTitle = "Test open issue Title";
+$sBody = "Test open issue Body";
 $oTCH->RegisterMethodWithReturn("OpenIssue", array($sUser, $sRepo, $sTitle, $sBody));
 
 //$iNumber = 10;
@@ -98,20 +98,20 @@ $oTCH->RegisterMethodWithReturn("OpenIssue", array($sUser, $sRepo, $sTitle, $sBo
 
 $oTCH->RegisterMethodWithReturn("ListLabels", array($sUser, $sRepo));
 
-$sLabel = "Label12";
-$iNumber = 12;
-$oTCH->RegisterMethodWithReturn("AddLabel", array($sUser, $sRepo, $sLabel, $iNumber));
+//$sLabel = "Label12";
+//$iNumber = 12;
+//$oTCH->RegisterMethodWithReturn("AddLabel", array($sUser, $sRepo, $sLabel, $iNumber));
 
 //$sLabel = "Label3";
 //$iNumber = "3";
 //$oTCH->RegisterMethodWithReturn("RemoveLabel", array($sUser, $sRepo, $sLabel, $iNumber));
 
-$iNumber = 12;
-$sComment = "Test Comment";
-$oTCH->RegisterMethodWithReturn("CommentOnIssue", array($sUser, $sRepo, $iNumber, $sComment));
+//$iNumber = 12;
+//$sComment = "Test Comment";
+//$oTCH->RegisterMethodWithReturn("CommentOnIssue", array($sUser, $sRepo, $iNumber, $sComment));
 
 
-$oTCH->RunTestMap();
+//$oTCH->RunTestMap();
 
 
 echo "Number of API requests: ".CGithubAPICallLimitator::$_iCounter."<br />";

@@ -227,7 +227,11 @@ class CTestClass
 				$sReturn = call_user_func(array($this->_oC, $sMethodName));
 			}
 		}
-		catch (CHTTPException $e)
+		catch (GitHubLimitException $e)
+		{
+			$sReturn = $e->getMessage();
+		}
+		catch (HTTPException $e)
 		{
 			$sReturn = $e->getMessage();
 		}

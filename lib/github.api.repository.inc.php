@@ -20,7 +20,7 @@ class CGithubRepositoryVisibility
 ////
 //// CLASS - GITHUB REPOSITORY API SERVICES
 ////
-//   Class implementing the GitHUb Repositories API Services
+//   Class implementing the GitHUb Repository API Services
 //
 class CGithubRepository extends CGithubAPIRequestServices
 {

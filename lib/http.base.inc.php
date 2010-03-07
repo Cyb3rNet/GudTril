@@ -1,7 +1,7 @@
 <?php
 
 
-class CHTTPException extends Exception
+class HTTPException extends Exception
 {
 	public function __construct($iCode)
 	{
@@ -309,7 +309,7 @@ class CHTTPBaseGet
 		$iHTTPResponse = curl_getinfo($this->_ch, CURLINFO_HTTP_CODE);
 		
 		if ($iHTTPResponse != 200)
-			throw new CHTTPException($iHTTPResponse);
+			throw new HTTPException($iHTTPResponse);
 		
 		return $sResponse;
 	}
@@ -379,7 +379,7 @@ class CHTTPBasePost
 		$iHTTPResponse = curl_getinfo($this->_ch, CURLINFO_HTTP_CODE);
 		
 		if ($iHTTPResponse != 200)
-			throw new CHTTPException($iHTTPResponse);
+			throw new HTTPException($iHTTPResponse);
 		
 		return $sResponse;
 	}

@@ -9,7 +9,7 @@ require_once("github.api.services.inc.php");
 ////
 //// CLASS - GITHUB USER API SERVICES
 ////
-//   Class implementing the GitHUb Users API Services
+//   Class implementing the GitHUb User API Services
 //
 class CGithubUser extends CGithubAPIRequestServices
 {

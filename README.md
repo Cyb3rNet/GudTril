@@ -2,7 +2,7 @@
 >>
 >> PHP 5 Github API Library
 >>
->> Version 0.8
+>> Version 0.9
 >>
 >> MIT Licence
 >>
@@ -11,9 +11,7 @@
 
 # Another PHP Github API Wrapper library
 
-I needed to implement for a client some fonctionalities with the Github API but didn't like the suggested PHP library, so I decided to build another one on my time and to share it with the world. I'm not too happy with most of the implementation and there's still alot to do, but it paves the way to offer a full PHP 5 Github API Wrapper library for the masses.
-
-Fork it and play with it!
+I needed to implement for a client some fonctionalities with the Github API. The PHP GitHub API libraries available not offering me the desired services, I decided to build my own.
 
 # Usage
 
@@ -29,9 +27,9 @@ Instantiate an object of a class contained in the files mentioned in the next se
 
 ## API Classes
 
-API classes follow the documentation at **develop.github.com** and are/will be in the following files:
+API classes follow the documentation at **develop.github.com** and are in the following files:
 
-* github.api.user.inc.php
+* github.api.user.inc.php - currently developed - tested
 * github.api.issues.inc.php - currently developed - tested
 * github.api.repository.inc.php - currently developed - tested
 * github.api.commit.inc.php - currently developed - tested
@@ -39,13 +37,11 @@ API classes follow the documentation at **develop.github.com** and are/will be i
 
 ## API Classes Usage
 
-Most of the classes have the same usage. Data is posted or getted after one instance creation and two method calls. Values are passed on the constructor, request is assembled and returned with two methods. That's it.
+Most of the classes have the same usage. Data is posted or getted after one instance creation and a method call. A method requesting the service is called and the response returned. That's it.
 
-First parameter passed to the constructor is a constant of the **CGithubResponseTypes** class to indicate the type of response desired; literally a string **'json'**, **'yaml'** or **'xml'** passed later internaly to the URL.
+Two values are passed to the constructor: First parameter passed to the constructor is a constant of the **CGithubResponseTypes** class to indicate the type of response desired; literally a string **'json'**, **'yaml'** or **'xml'** passed later internaly to the URL.
 
-The other parameters are usually values needed to fill the URL for the request or the post values.
-
-The request is assembled with **AssembleRequest()** method an data is returned with **RequestService()** method.
+The other parameter is a boolean value asking for a forced authentication, although it can be non mandatory letting the internal logic decide if authentication is required with a POST HTTPS connection.
 
 ## Usage Example
 
@@ -62,11 +58,11 @@ The request is assembled with **AssembleRequest()** method an data is returned w
 
 ## Authentication
 
-Authentification is done by passing a boolean value at the constructor of the APi modules or automatically set by default on some methods. When Authetification is valued the connexion goes on HTTPS mode. HTTPS can be forced on the configuration file: `github.confs.inc.php`.
+Authentification is done by passing a boolean value at the constructor of the APi modules or automatically set by default on some methods. When Authetification is valued the connexion goes on HTTPS mode and its a POST request. HTTPS can be forced on the configuration file: `github.confs.inc.php`.
 
-## API Limitation
+## API Service Call Limitation
 
-I've even implemented a counter as the base curl class for limiting the the number of requests to less than 60 per minute as mentioned in the documentation. The script throws an **Exception** if 60 or more requests within a minute have been made.
+I've even implemented a counter as the base curl class for limiting the the number of requests to less than 60 per minute as mentioned in the documentation. The script throws a **GitHubLimitException** if 60 or more requests within a minute have been made.
 
 ## Tests
 

@@ -2,9 +2,9 @@
 >>
 >> PHP 5 Github API Library
 >>
->> Version 0.9
+>> Version 0.9.2
 >>
->> MIT Licence
+>> Creative Commons Attribution - cc by
 >>
 >> Uses github.com API
 >> Uses CURL library
